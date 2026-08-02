@@ -7,3 +7,7 @@ html { scroll-behavior: smooth; }
 body { margin: 0; background: #ffffff; color: #101828; font-family: Arial, Helvetica, sans-serif; }
 * { box-sizing: border-box; }
 ::selection { background: #c7d2fe; }
+
+img[src="/sanval-ebert.svg"] {
+  content: url("https://avatars.githubusercontent.com/u/115511942?v=4");
+}
