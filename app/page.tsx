@@ -3,8 +3,6 @@
 import { FormEvent, useMemo, useState } from "react";
 import { ArrowRight, Bot, BrainCircuit, Check, GraduationCap, Scale, Sparkles } from "lucide-react";
 
-const profileImage = "https://avatars.githubusercontent.com/u/115511942?v=4";
-
 const meetings = [
   { number: "01", title: "Inteligência Artificial e a nova realidade da educação", text: "Fundamentos, possibilidades, limites e desafios éticos e pedagógicos." },
   { number: "02", title: "IA na prática: aulas, materiais e avaliações", text: "Planejamento, atividades, questões, rubricas e feedbacks com propósito pedagógico." },
@@ -49,7 +47,7 @@ export default function Home() {
           </div>
           <div className="relative mx-auto w-full max-w-md">
             <div className="absolute -inset-5 rounded-[2.5rem] bg-gradient-to-br from-indigo-300 to-orange-200 opacity-35 blur-2xl"/>
-            <img src={profileImage} alt="Sanval Ebert, idealizador do Professor IA" className="relative aspect-square w-full rounded-[2.5rem] object-cover shadow-soft"/>
+            <img src="/sanval-ebert.jpg" alt="Sanval Ebert, idealizador do Professor IA" className="relative aspect-square w-full rounded-[2.5rem] object-cover object-top shadow-soft"/>
             <div className="absolute -bottom-5 left-5 right-5 rounded-2xl border border-white/80 bg-white/95 p-4 shadow-xl"><strong>Sanval Ebert</strong><p className="text-sm text-slate-600">Pesquisador em IA aplicada à Educação</p></div>
           </div>
         </div>
@@ -78,7 +76,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20"><div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-2"><img src={profileImage} alt="Sanval Ebert" className="aspect-square w-full rounded-[2rem] object-cover shadow-soft"/><div><p className="font-bold text-brand">Quem conduz</p><h2 className="mt-3 text-4xl font-black">Sanval Ebert</h2><p className="mt-5 text-lg leading-8 text-slate-600">Doutor em Difusão do Conhecimento, professor, coordenador acadêmico e pesquisador em Inteligência Artificial aplicada à Educação. Atua na integração entre tecnologias digitais, inovação educacional e formação docente.</p><p className="mt-4 leading-7 text-slate-600">Depois de dialogar com professores de diferentes regiões do Brasil durante a transformação digital da pandemia, inicia uma nova jornada: preparar docentes para a era da IA.</p></div></div></section>
+      <section className="py-20"><div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-2"><img src="/sanval-ebert.jpg" alt="Sanval Ebert" className="aspect-square w-full rounded-[2rem] object-cover object-top shadow-soft"/><div><p className="font-bold text-brand">Quem conduz</p><h2 className="mt-3 text-4xl font-black">Sanval Ebert</h2><p className="mt-5 text-lg leading-8 text-slate-600">Doutor em Difusão do Conhecimento, professor, coordenador acadêmico e pesquisador em Inteligência Artificial aplicada à Educação. Atua na integração entre tecnologias digitais, inovação educacional e formação docente.</p><p className="mt-4 leading-7 text-slate-600">Depois de dialogar com professores de diferentes regiões do Brasil durante a transformação digital da pandemia, inicia uma nova jornada: preparar docentes para a era da IA.</p></div></div></section>
 
       <section id="inscricao" className="bg-gradient-to-br from-indigo-950 to-brand py-20 text-white">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-[.8fr_1.2fr]"><div><p className="font-bold text-indigo-200">Inscrição gratuita</p><h2 className="mt-3 text-4xl font-black">Faça parte da primeira Jornada Professor IA.</h2><p className="mt-5 text-lg leading-8 text-indigo-100">Preencha seus dados. As informações de acesso aos encontros serão enviadas por e-mail e WhatsApp.</p></div>
