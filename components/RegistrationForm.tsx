@@ -164,6 +164,7 @@ export default function RegistrationForm() {
 
           {status === "error" && (
             <div
+              id="registration-feedback"
               ref={feedbackRef}
               tabIndex={-1}
               role="alert"
