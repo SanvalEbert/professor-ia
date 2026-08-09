@@ -4,10 +4,10 @@ on:
   pull_request:
     branches: [main]
   push:
-    branches: [main]
+    branches: [main, "feat/**"]
 
 jobs:
-  build:
+  quality:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,15 +16,22 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
+          cache-dependency-path: package.json
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build
+      - name: Regression tests
+        run: npm run test
+
+      - name: TypeScript
+        run: npm run typecheck
+
+      - name: Production build
         env:
-          NEXT_PUBLIC_SUPABASE_URL: https://example.supabase.co
+          SUPABASE_URL: https://example.supabase.co
           SUPABASE_SERVICE_ROLE_KEY: placeholder
           NEXT_PUBLIC_WHATSAPP_GROUP_URL: https://chat.whatsapp.com/placeholder
         run: npm run build
