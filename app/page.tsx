@@ -1,6 +1,7 @@
 import Image from "next/image";
 import {
   ArrowRight,
+  BookOpen,
   Bot,
   BrainCircuit,
   CalendarDays,
@@ -8,7 +9,9 @@ import {
   ChevronRight,
   FileCheck2,
   GraduationCap,
+  Instagram,
   Layers3,
+  Linkedin,
   MessageSquareText,
   Scale,
   Sparkles,
@@ -16,6 +19,24 @@ import {
 } from "lucide-react";
 
 const FORM_URL = "https://forms.gle/2wqf6Y5S5UG2mYPA6";
+
+const socialLinks = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/msc-sanval-ebert/",
+    Icon: Linkedin,
+  },
+  {
+    label: "ResearchGate",
+    href: "https://www.researchgate.net/profile/Sanval-Ebert-De-Santos?ev=hdr_xprf",
+    Icon: BookOpen,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/sanvalebert/",
+    Icon: Instagram,
+  },
+] as const;
 
 const meetings = [
   {
@@ -209,6 +230,26 @@ export default function Home() {
             <p className="mt-6 text-xl font-bold leading-8 text-slate-800">Professor, coordenador acadêmico e pesquisador em Inteligência Artificial aplicada à Educação.</p>
             <p className="mt-5 text-lg leading-8 text-slate-600">Doutor em Difusão do Conhecimento, atua na integração entre tecnologias digitais, inovação educacional e formação docente.</p>
             <p className="mt-4 text-lg leading-8 text-slate-600">Durante a transformação digital da pandemia, dialogou e trabalhou com professores de diferentes regiões do Brasil. Agora, retoma essa experiência em uma nova jornada: preparar docentes para compreender e incorporar a IA com intencionalidade pedagógica.</p>
+
+            <div className="mt-8">
+              <p className="text-sm font-black uppercase tracking-[.14em] text-slate-500">Acompanhe e conheça minha trajetória</p>
+              <div className="mt-3 flex flex-wrap gap-3">
+                {socialLinks.map(({ label, href, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Abrir ${label} de Sanval Ebert`}
+                    className="group inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2.5 text-sm font-extrabold text-blue-800 transition hover:-translate-y-0.5 hover:border-brand hover:bg-brand hover:text-white hover:shadow-lg hover:shadow-blue-100"
+                  >
+                    <Icon size={18} className="shrink-0" />
+                    {label}
+                  </a>
+                ))}
+              </div>
+            </div>
+
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {["Experiência em formação docente", "Pesquisa em IA e educação", "Atuação acadêmica e profissional", "Abordagem prática e ética"].map((item) => (
                 <div key={item} className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4 font-bold text-slate-700"><Check size={18} className="shrink-0 text-emerald-600" />{item}</div>
@@ -241,6 +282,21 @@ export default function Home() {
       <footer className="bg-ink px-5 py-12 text-slate-400">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 text-center text-sm md:flex-row md:text-left">
           <div><strong className="text-white">PROFESSOR <span className="text-blue-400">IA</span></strong><p className="mt-2">Formação docente para a era da Inteligência Artificial.</p></div>
+          <div className="flex items-center gap-2" aria-label="Redes sociais de Sanval Ebert">
+            {socialLinks.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Abrir ${label} de Sanval Ebert`}
+                title={label}
+                className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition hover:-translate-y-0.5 hover:border-blue-400/50 hover:bg-blue-500/15 hover:text-white"
+              >
+                <Icon size={18} />
+              </a>
+            ))}
+          </div>
           <p>Uma iniciativa de Sanval Ebert · <a href="/politica-de-privacidade" className="underline transition hover:text-white">Política de Privacidade</a></p>
         </div>
       </footer>
