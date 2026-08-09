@@ -17,7 +17,7 @@ export default function AccessibilityTools() {
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 560);
+    const onScroll = () => setShowTop(window.scrollY > 480);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -27,6 +27,11 @@ export default function AccessibilityTools() {
     if (!window.VLibras || window.__professorIaVLibrasLoaded) return;
     new window.VLibras.Widget("https://vlibras.gov.br/app");
     window.__professorIaVLibrasLoaded = true;
+  }
+
+  function scrollToTop() {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
   }
 
   return (
@@ -50,7 +55,7 @@ export default function AccessibilityTools() {
         className={`scroll-top-button ${showTop ? "scroll-top-button--visible" : ""}`}
         aria-label="Voltar ao topo da página"
         title="Voltar ao topo"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        onClick={scrollToTop}
       >
         <ArrowUp aria-hidden="true" size={21} strokeWidth={2.4} />
       </button>

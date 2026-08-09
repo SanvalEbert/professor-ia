@@ -9,16 +9,30 @@ const experiencias = new Set(["Nenhuma", "Iniciante", "Intermediário", "Avança
 const clean = (value: unknown, max = 180) =>
   typeof value === "string" ? value.trim().replace(/\s+/g, " ").slice(0, max) : "";
 
+const json = (body: Record<string, unknown>, status: number) =>
+  NextResponse.json(body, { status, headers: { "Cache-Control": "no-store" } });
+
 export async function POST(request: NextRequest) {
+  const contentType = request.headers.get("content-type") || "";
+  if (!contentType.toLowerCase().includes("application/json")) {
+    return json({ error: "Formato de requisição não suportado." }, 415);
+  }
+
   let body: Record<string, unknown>;
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json({ error: "Dados de inscrição inválidos." }, { status: 400 });
+    return json({ error: "Dados de inscrição inválidos." }, 400);
+  }
+
+  // Campo invisível para reduzir submissões automatizadas simples sem impactar pessoas usuárias.
+  if (clean(body.website, 120)) {
+    return json({ ok: true }, 201);
   }
 
   const nome_completo = clean(body.nome_completo, 160);
   const whatsapp = clean(body.whatsapp, 30);
+  const whatsappDigits = whatsapp.replace(/\D/g, "");
   const email = clean(body.email, 180).toLowerCase();
   const cidade = clean(body.cidade, 120);
   const estado = clean(body.estado, 2).toUpperCase();
@@ -28,7 +42,8 @@ export async function POST(request: NextRequest) {
 
   if (
     nome_completo.length < 3 ||
-    whatsapp.length < 8 ||
+    whatsappDigits.length < 10 ||
+    whatsappDigits.length > 13 ||
     !/^\S+@\S+\.\S+$/.test(email) ||
     cidade.length < 2 ||
     !estados.has(estado) ||
@@ -36,10 +51,7 @@ export async function POST(request: NextRequest) {
     !experiencias.has(experiencia_ia) ||
     !consentimento_lgpd
   ) {
-    return NextResponse.json(
-      { error: "Revise os campos obrigatórios e tente novamente." },
-      { status: 400 },
-    );
+    return json({ error: "Revise os campos obrigatórios e tente novamente." }, 400);
   }
 
   const supabaseUrl = process.env.SUPABASE_URL;
@@ -47,10 +59,7 @@ export async function POST(request: NextRequest) {
 
   if (!supabaseUrl || !supabaseKey) {
     console.error("Banco de inscrições não configurado no ambiente.");
-    return NextResponse.json(
-      { error: "O serviço de inscrições está em configuração. Tente novamente em breve." },
-      { status: 503 },
-    );
+    return json({ error: "O serviço de inscrições está em configuração. Tente novamente em breve." }, 503);
   }
 
   const headers: Record<string, string> = {
@@ -67,7 +76,7 @@ export async function POST(request: NextRequest) {
 
   const payload = {
     nome_completo,
-    whatsapp,
+    whatsapp: whatsappDigits,
     email,
     cidade,
     estado,
@@ -88,13 +97,11 @@ export async function POST(request: NextRequest) {
       headers,
       body: JSON.stringify(payload),
       cache: "no-store",
+      signal: AbortSignal.timeout(8000),
     });
   } catch (error) {
     console.error("Falha de conexão com o banco de inscrições:", error);
-    return NextResponse.json(
-      { error: "Não foi possível concluir sua inscrição agora. Tente novamente em instantes." },
-      { status: 502 },
-    );
+    return json({ error: "Não foi possível concluir sua inscrição agora. Tente novamente em instantes." }, 502);
   }
 
   if (!response.ok) {
@@ -102,18 +109,12 @@ export async function POST(request: NextRequest) {
     const duplicate = response.status === 409 || detail.includes("23505") || detail.toLowerCase().includes("duplicate");
 
     if (duplicate) {
-      return NextResponse.json(
-        { error: "Este e-mail já está inscrito na Jornada Professor IA." },
-        { status: 409 },
-      );
+      return json({ error: "Este e-mail já está inscrito na Jornada Professor IA." }, 409);
     }
 
     console.error("Supabase recusou a inscrição:", response.status, detail.slice(0, 500));
-    return NextResponse.json(
-      { error: "Não foi possível concluir sua inscrição agora. Tente novamente em instantes." },
-      { status: 502 },
-    );
+    return json({ error: "Não foi possível concluir sua inscrição agora. Tente novamente em instantes." }, 502);
   }
 
-  return NextResponse.json({ ok: true }, { status: 201 });
+  return json({ ok: true }, 201);
 }
