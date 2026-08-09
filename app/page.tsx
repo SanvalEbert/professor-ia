@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 
 const FORM_URL = "https://forms.gle/2wqf6Y5S5UG2mYPA6";
-const FORM_EMBED_URL = `${FORM_URL}?embedded=true`;
 
 const meetings = [
   {
@@ -64,7 +63,7 @@ export default function Home() {
             <a className="transition hover:text-brand" href="#jornada">Jornada</a>
             <a className="transition hover:text-brand" href="#quem-conduz">Quem conduz</a>
           </nav>
-          <a href="#inscricao" className="rounded-full bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-lg shadow-blue-200 transition hover:-translate-y-0.5 hover:shadow-xl">
+          <a href={FORM_URL} target="_blank" rel="noreferrer" className="rounded-full bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-lg shadow-blue-200 transition hover:-translate-y-0.5 hover:shadow-xl">
             Participar gratuitamente
           </a>
         </div>
@@ -87,7 +86,7 @@ export default function Home() {
               Compreenda, experimente e aplique Inteligência Artificial na criação de aulas, materiais, avaliações, feedbacks e novas experiências de aprendizagem.
             </p>
             <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <a href="#inscricao" className="group inline-flex items-center justify-center gap-3 rounded-full bg-accent px-7 py-4 font-extrabold text-white shadow-xl shadow-blue-200 transition hover:-translate-y-1 hover:shadow-2xl">
+              <a href={FORM_URL} target="_blank" rel="noreferrer" className="group inline-flex items-center justify-center gap-3 rounded-full bg-accent px-7 py-4 font-extrabold text-white shadow-xl shadow-blue-200 transition hover:-translate-y-1 hover:shadow-2xl">
                 Quero participar gratuitamente
                 <ArrowRight size={19} className="transition group-hover:translate-x-1" />
               </a>
@@ -145,22 +144,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="beneficios" className="py-20 md:py-28">
+      <section id="beneficios" className="bg-gradient-to-b from-white to-blue-50 py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="max-w-3xl">
             <p className="font-black uppercase tracking-[.18em] text-brand">Da curiosidade à prática</p>
-            <h2 className="text-balance mt-4 text-4xl font-black tracking-tight md:text-5xl">IA como aliada do trabalho docente — com propósito, critério e autoria.</h2>
+            <h2 className="text-balance mt-4 text-4xl font-black tracking-tight md:text-5xl">IA como aliada do trabalho docente, com propósito, critério e autoria.</h2>
             <p className="mt-5 text-lg leading-8 text-slate-600">A jornada conecta recursos de IA às situações que fazem parte da rotina de professores.</p>
           </div>
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {benefits.map(([Icon, title, text], index) => (
-              <article key={title} className="group rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl">
-                <div className="flex items-start justify-between">
-                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-brand transition group-hover:bg-brand group-hover:text-white"><Icon size={23} /></span>
-                  <span className="text-sm font-black text-slate-300">0{index + 1}</span>
+              <article key={title} className="group relative overflow-hidden rounded-[2rem] border border-blue-500/20 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 p-7 text-white shadow-lg shadow-blue-900/10 transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
+                <div className="relative flex items-start justify-between">
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl border border-white/15 bg-white/10 text-white transition group-hover:bg-white group-hover:text-brand"><Icon size={23} /></span>
+                  <span className="text-sm font-black text-blue-200">0{index + 1}</span>
                 </div>
-                <h3 className="mt-6 text-2xl font-black">{title}</h3>
-                <p className="mt-3 leading-7 text-slate-600">{text}</p>
+                <h3 className="relative mt-6 text-2xl font-black">{title}</h3>
+                <p className="relative mt-3 leading-7 text-blue-100">{text}</p>
               </article>
             ))}
           </div>
@@ -174,20 +174,21 @@ export default function Home() {
               <p className="font-black uppercase tracking-[.18em] text-brand">Jornada Professor IA</p>
               <h2 className="text-balance mt-4 text-4xl font-black tracking-tight md:text-5xl">Três encontros. Uma progressão pedagógica.</h2>
             </div>
-            <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-600 shadow-sm">
+            <div className="flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-bold text-blue-800 shadow-sm">
               <CalendarDays size={17} className="text-brand" /> Datas divulgadas aos inscritos
             </div>
           </div>
           <div className="relative mt-14 grid gap-6 lg:grid-cols-3">
             {meetings.map((meeting, index) => (
-              <article key={meeting.number} className="relative rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
-                <div className="flex items-center justify-between">
-                  <span className="text-6xl font-black text-blue-100">{meeting.number}</span>
-                  <span className="rounded-full bg-blue-50 px-4 py-2 text-xs font-black uppercase tracking-[.16em] text-brand">{meeting.stage}</span>
+              <article key={meeting.number} className="relative overflow-hidden rounded-[2rem] border border-blue-800/20 bg-gradient-to-br from-blue-950 via-blue-900 to-blue-700 p-8 text-white shadow-xl shadow-blue-950/10">
+                <div className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-sky-400/20 blur-3xl" />
+                <div className="relative flex items-center justify-between">
+                  <span className="text-6xl font-black text-blue-300/35">{meeting.number}</span>
+                  <span className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[.16em] text-blue-100">{meeting.stage}</span>
                 </div>
-                <h3 className="mt-7 text-2xl font-black leading-tight">{meeting.title}</h3>
-                <p className="mt-4 leading-7 text-slate-600">{meeting.text}</p>
-                {index < meetings.length - 1 && <ChevronRight className="absolute -right-5 top-1/2 z-10 hidden -translate-y-1/2 text-blue-300 lg:block" size={34} />}
+                <h3 className="relative mt-7 text-2xl font-black leading-tight">{meeting.title}</h3>
+                <p className="relative mt-4 leading-7 text-blue-100">{meeting.text}</p>
+                {index < meetings.length - 1 && <ChevronRight className="absolute -right-5 top-1/2 z-10 hidden -translate-y-1/2 text-blue-400 lg:block" size={34} />}
               </article>
             ))}
           </div>
@@ -220,41 +221,20 @@ export default function Home() {
       <section id="inscricao" className="relative overflow-hidden bg-gradient-to-br from-blue-950 via-brand to-blue-700 py-20 text-white md:py-28">
         <div className="absolute -left-20 top-0 h-80 w-80 rounded-full bg-blue-400/20 blur-3xl" />
         <div className="absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-sky-300/20 blur-3xl" />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[.8fr_1.2fr] lg:items-start lg:px-8">
-          <div className="lg:sticky lg:top-28">
-            <p className="font-black uppercase tracking-[.18em] text-blue-200">Inscrição gratuita</p>
-            <h2 className="text-balance mt-4 text-4xl font-black md:text-5xl">Faça parte da primeira Jornada Professor IA.</h2>
-            <p className="mt-6 text-lg leading-8 text-blue-100">Preencha o formulário ao lado. As informações de acesso serão enviadas pelos canais informados na inscrição.</p>
-            <div className="mt-8 space-y-4 text-sm font-bold text-blue-50">
-              {["Participação gratuita", "Encontros online", "Conteúdo voltado à prática docente", "Inscrição gerenciada pelo Google Forms"].map((item) => (
-                <div key={item} className="flex items-center gap-3"><span className="grid h-8 w-8 place-items-center rounded-full bg-white/10"><Check size={16} /></span>{item}</div>
-              ))}
-            </div>
+        <div className="relative mx-auto max-w-5xl px-5 text-center lg:px-8">
+          <p className="font-black uppercase tracking-[.18em] text-blue-200">Inscrição gratuita</p>
+          <h2 className="text-balance mx-auto mt-4 max-w-4xl text-4xl font-black md:text-6xl">Dê o próximo passo para transformar a IA em uma aliada da sua prática docente.</h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-blue-100">A inscrição é rápida e feita pelo Google Forms. Ao clicar no botão, você será direcionado para concluir seus dados com segurança.</p>
+          <div className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-3 text-sm font-bold text-blue-50">
+            {["Participação gratuita", "Encontros online", "Conteúdo voltado à prática docente"].map((item) => (
+              <span key={item} className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2"><Check size={16} />{item}</span>
+            ))}
           </div>
-
-          <div className="rounded-[2rem] border border-white/70 bg-white p-3 text-ink shadow-2xl sm:p-5 md:p-7">
-            <div className="overflow-hidden rounded-[1.5rem] bg-white">
-              <iframe
-                src={FORM_EMBED_URL}
-                title="Formulário de inscrição da Jornada Professor IA"
-                className="block h-[1180px] w-full border-0 md:h-[1080px]"
-                loading="lazy"
-              >
-                Carregando formulário de inscrição…
-              </iframe>
-            </div>
-            <div className="px-3 pb-2 pt-5 text-center text-sm text-slate-600">
-              <p>Se o formulário não aparecer corretamente no seu dispositivo, você pode abri-lo diretamente no Google Forms.</p>
-              <a
-                href={FORM_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 font-extrabold text-white shadow-lg shadow-blue-100 transition hover:-translate-y-0.5"
-              >
-                Abrir formulário em nova aba <ArrowRight size={17} />
-              </a>
-            </div>
-          </div>
+          <a href={FORM_URL} target="_blank" rel="noreferrer" className="group mt-10 inline-flex items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-lg font-black text-brand shadow-2xl shadow-blue-950/20 transition hover:-translate-y-1 hover:bg-blue-50">
+            Fazer minha inscrição gratuita
+            <ArrowRight size={20} className="transition group-hover:translate-x-1" />
+          </a>
+          <p className="mt-4 text-sm text-blue-200">O formulário será aberto em uma nova aba.</p>
         </div>
       </section>
 
