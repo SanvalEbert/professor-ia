@@ -21,6 +21,8 @@ body {
 * { box-sizing: border-box; }
 ::selection { background: #bfdbfe; color: #0f172a; }
 
+[id] { scroll-margin-top: 6rem; }
+
 a, button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
   outline: 3px solid rgba(37, 99, 235, .36);
@@ -94,9 +96,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 767px) {
   body { overflow-x: hidden; }
 
+  header > div {
+    gap: .75rem;
+    padding-left: .85rem !important;
+    padding-right: .85rem !important;
+  }
+
   header a[href="#inscricao"] {
-    max-width: 10rem;
-    padding: .7rem .9rem;
+    max-width: 9.5rem;
+    min-height: 2.75rem;
+    padding: .7rem .85rem;
     font-size: .75rem;
     line-height: 1.15;
     text-align: center;
@@ -105,14 +114,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   /* A chamada fixa anterior ocupava toda a base da tela e competia com widgets de acessibilidade. */
   main > a[href="#inscricao"].fixed { display: none !important; }
 
+  /* No celular, o retorno ao topo fica à esquerda para não disputar espaço com o VLibras. */
   .scroll-top-button {
-    right: .8rem;
+    right: auto;
+    left: .8rem;
     bottom: calc(.8rem + env(safe-area-inset-bottom));
     width: 2.85rem;
     height: 2.85rem;
   }
 
   [vw].enabled { z-index: 54 !important; }
+
+  input, select, textarea {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  header a[aria-label="Professor IA - início"] > span:last-child {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
