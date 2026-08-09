@@ -42,6 +42,15 @@ test("usa vírgula no título sobre IA como aliada", () => {
   assert.doesNotMatch(page, /IA como aliada do trabalho docente —/);
 });
 
+test("exibe LinkedIn, ResearchGate e Instagram sem GitHub", () => {
+  const page = read("app/page.tsx");
+  assert.match(page, /linkedin\.com\/in\/msc-sanval-ebert/);
+  assert.match(page, /researchgate\.net\/profile\/Sanval-Ebert-De-Santos/);
+  assert.match(page, /instagram\.com\/sanvalebert/);
+  assert.match(page, /Acompanhe e conheça minha trajetória/);
+  assert.doesNotMatch(page, /github\.com/);
+});
+
 test("não mantém dependência ou prebuild do Supabase", () => {
   const pkg = read("package.json");
   assert.doesNotMatch(pkg, /@supabase\/supabase-js/);
