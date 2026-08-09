@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+// Endpoint de diagnóstico somente-leitura para validar a conexão do banco.
 export async function GET() {
   const supabaseUrl = process.env.SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
