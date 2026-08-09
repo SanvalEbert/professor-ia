@@ -6,11 +6,11 @@ const config: Config = {
     extend: {
       colors: {
         ink: "#101828",
-        brand: "#4338ca",
-        accent: "#f97316"
+        brand: "#1d4ed8",
+        accent: "#2563eb"
       },
       boxShadow: {
-        soft: "0 20px 60px rgba(67, 56, 202, 0.12)"
+        soft: "0 20px 60px rgba(37, 99, 235, 0.14)"
       }
     }
   },
