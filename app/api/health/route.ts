@@ -9,7 +9,7 @@ export async function GET() {
     return NextResponse.json(
       {
         ok: true,
-        registration: "google-forms",
+        registration: "native-form",
         database: "pending-configuration",
       },
       { headers: { "Cache-Control": "no-store" } },
@@ -30,7 +30,7 @@ export async function GET() {
     return NextResponse.json(
       {
         ok: response.ok,
-        registration: "google-forms",
+        registration: "native-form",
         database: response.ok ? "connected" : "connection-error",
         databaseStatus: response.status,
       },
@@ -40,7 +40,7 @@ export async function GET() {
     return NextResponse.json(
       {
         ok: false,
-        registration: "google-forms",
+        registration: "native-form",
         database: "connection-error",
       },
       {
