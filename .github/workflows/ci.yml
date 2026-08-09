@@ -30,8 +30,4 @@ jobs:
         run: npm run typecheck
 
       - name: Production build
-        env:
-          SUPABASE_URL: https://example.supabase.co
-          SUPABASE_SERVICE_ROLE_KEY: placeholder
-          NEXT_PUBLIC_WHATSAPP_GROUP_URL: https://chat.whatsapp.com/placeholder
         run: npm run build
