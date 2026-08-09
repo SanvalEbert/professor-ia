@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AccessibilityTools from "@/components/AccessibilityTools";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,7 +25,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body>
+        <a href="#inicio" className="skip-link">Pular para o conteúdo principal</a>
+        {children}
+        <AccessibilityTools />
+      </body>
     </html>
   );
 }
