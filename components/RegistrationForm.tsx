@@ -30,10 +30,11 @@ export default function RegistrationForm() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const formElement = event.currentTarget;
     setStatus("sending");
     setMessage("");
 
-    const form = new FormData(event.currentTarget);
+    const form = new FormData(formElement);
     const payload = Object.fromEntries(form.entries());
 
     try {
@@ -52,7 +53,7 @@ export default function RegistrationForm() {
 
       setStatus("success");
       setMessage("Inscrição realizada com sucesso. Em breve você receberá as próximas orientações.");
-      event.currentTarget.reset();
+      formElement.reset();
     } catch {
       setStatus("error");
       setMessage("Não foi possível conectar ao serviço de inscrição. Tente novamente em instantes.");
