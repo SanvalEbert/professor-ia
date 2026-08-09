@@ -59,8 +59,8 @@ export default function RegistrationForm() {
       }
 
       setStatus("success");
-      setMessage("Inscrição realizada com sucesso. Em breve você receberá as próximas orientações.");
-      formElement.reset();
+      setMessage("Inscrição realizada com sucesso. Redirecionando para as próximas orientações.");
+      window.location.assign("/confirmacao");
     } catch {
       setStatus("error");
       setMessage("Não foi possível conectar ao serviço de inscrição. Tente novamente em instantes.");
