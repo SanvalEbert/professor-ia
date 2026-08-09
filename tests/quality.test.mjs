@@ -21,13 +21,46 @@ test("usa identidade visual predominantemente azul", () => {
   assert.match(config, /accent: "#2563eb"/);
 });
 
-test("direciona inscrição ao Google Forms sem iframe", () => {
+test("usa formulário nativo de inscrição sem Google Forms", () => {
   const page = read("app/page.tsx");
-  assert.match(page, /forms\.gle\/2wqf6Y5S5UG2mYPA6/);
+  const form = read("components/RegistrationForm.tsx");
+
+  assert.match(page, /<RegistrationForm \/>/);
+  assert.match(page, /href="#inscricao"/);
+  assert.doesNotMatch(page, /forms\.gle/);
   assert.doesNotMatch(page, /<iframe/);
-  assert.doesNotMatch(page, /FORM_EMBED_URL/);
-  assert.match(page, /Fazer minha inscrição gratuita/);
-  assert.match(page, /target="_blank"/);
+
+  for (const field of [
+    "nome_completo",
+    "whatsapp",
+    "email",
+    "cidade",
+    "estado",
+    "instituicao_ensino",
+    "experiencia_ia",
+  ]) {
+    assert.match(form, new RegExp(`name=\\"${field}\\"`));
+  }
+
+  for (const nivel of ["Nenhuma", "Iniciante", "Intermediário", "Avançado"]) {
+    assert.match(form, new RegExp(nivel));
+  }
+});
+
+test("API grava inscrições no Supabase apenas pelo servidor", () => {
+  const api = read("app/api/inscricoes/route.ts");
+  const env = read(".env.example");
+  const schema = read("database/schema.sql");
+
+  assert.match(api, /SUPABASE_SECRET_KEY/);
+  assert.match(api, /SUPABASE_SERVICE_ROLE_KEY/);
+  assert.match(api, /\/rest\/v1\/participantes/);
+  assert.match(api, /Este e-mail já está inscrito/);
+  assert.match(env, /SUPABASE_URL=/);
+  assert.match(env, /SUPABASE_SECRET_KEY=/);
+  assert.match(schema, /create table if not exists public\.participantes/);
+  assert.match(schema, /unique index if not exists participantes_email_unique/);
+  assert.match(schema, /revoke all on table public\.participantes from anon, authenticated/);
 });
 
 test("usa cards azuis nas áreas de aprendizagem e jornada", () => {
@@ -51,8 +84,9 @@ test("exibe LinkedIn, ResearchGate e Instagram sem GitHub", () => {
   assert.doesNotMatch(page, /github\.com/);
 });
 
-test("não mantém dependência ou prebuild do Supabase", () => {
+test("não expõe cliente ou chave do Supabase no navegador", () => {
   const pkg = read("package.json");
+  const form = read("components/RegistrationForm.tsx");
   assert.doesNotMatch(pkg, /@supabase\/supabase-js/);
-  assert.doesNotMatch(pkg, /check-supabase-persistence/);
+  assert.doesNotMatch(form, /SUPABASE_/);
 });
