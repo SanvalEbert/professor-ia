@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const estados = [
@@ -16,6 +16,7 @@ const fieldClass =
 export default function RegistrationForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const feedbackRef = useRef<HTMLDivElement>(null);
 
   const utm = useMemo(() => {
     if (typeof window === "undefined") return {};
@@ -27,6 +28,12 @@ export default function RegistrationForm() {
       origem: params.get("utm_source") || document.referrer || "direto",
     };
   }, []);
+
+  useEffect(() => {
+    if (status === "success" || status === "error") {
+      feedbackRef.current?.focus();
+    }
+  }, [status]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -69,33 +76,57 @@ export default function RegistrationForm() {
       </div>
 
       {status === "success" ? (
-        <div className="rounded-3xl border border-emerald-200 bg-emerald-50 p-6 text-center">
+        <div
+          ref={feedbackRef}
+          tabIndex={-1}
+          role="status"
+          aria-live="polite"
+          className="rounded-3xl border border-emerald-200 bg-emerald-50 p-6 text-center outline-none"
+        >
           <CheckCircle2 className="mx-auto text-emerald-600" size={38} />
           <p className="mt-3 font-black text-emerald-900">Inscrição confirmada!</p>
           <p className="mt-2 text-sm leading-6 text-emerald-800">{message}</p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="grid gap-5">
+        <form onSubmit={handleSubmit} className="grid gap-5" aria-busy={status === "sending"}>
+          <div className="sr-only" aria-hidden="true">
+            <label>
+              Não preencha este campo
+              <input name="website" type="text" tabIndex={-1} autoComplete="off" />
+            </label>
+          </div>
+
           <label className="font-bold text-slate-700">
             Nome completo <span className="text-red-500">*</span>
-            <input name="nome_completo" type="text" required minLength={3} autoComplete="name" className={fieldClass} />
+            <input name="nome_completo" type="text" required minLength={3} maxLength={160} autoComplete="name" className={fieldClass} />
           </label>
 
           <div className="grid gap-5 md:grid-cols-2">
             <label className="font-bold text-slate-700">
               WhatsApp <span className="text-red-500">*</span>
-              <input name="whatsapp" type="tel" required minLength={8} autoComplete="tel" placeholder="(71) 99999-9999" className={fieldClass} />
+              <input
+                name="whatsapp"
+                type="tel"
+                required
+                minLength={10}
+                maxLength={20}
+                inputMode="tel"
+                autoComplete="tel"
+                placeholder="(71) 99999-9999"
+                pattern="[0-9()+\-\s]{10,20}"
+                className={fieldClass}
+              />
             </label>
             <label className="font-bold text-slate-700">
               E-mail <span className="text-red-500">*</span>
-              <input name="email" type="email" required autoComplete="email" placeholder="voce@exemplo.com" className={fieldClass} />
+              <input name="email" type="email" required maxLength={180} autoComplete="email" placeholder="voce@exemplo.com" className={fieldClass} />
             </label>
           </div>
 
           <div className="grid gap-5 md:grid-cols-[1fr_.45fr]">
             <label className="font-bold text-slate-700">
               Cidade <span className="text-red-500">*</span>
-              <input name="cidade" type="text" required minLength={2} autoComplete="address-level2" className={fieldClass} />
+              <input name="cidade" type="text" required minLength={2} maxLength={120} autoComplete="address-level2" className={fieldClass} />
             </label>
             <label className="font-bold text-slate-700">
               Estado <span className="text-red-500">*</span>
@@ -108,7 +139,7 @@ export default function RegistrationForm() {
 
           <label className="font-bold text-slate-700">
             Instituição de Ensino <span className="text-red-500">*</span>
-            <input name="instituicao_ensino" type="text" required minLength={2} className={fieldClass} />
+            <input name="instituicao_ensino" type="text" required minLength={2} maxLength={180} className={fieldClass} />
           </label>
 
           <fieldset>
@@ -125,14 +156,30 @@ export default function RegistrationForm() {
 
           <label className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4 text-sm leading-6 text-slate-600">
             <input name="consentimento_lgpd" type="checkbox" value="true" required className="mt-1 h-4 w-4 shrink-0 accent-blue-600" />
-            <span>Concordo com o uso dos meus dados para fins de inscrição e comunicação relacionados à Jornada Professor IA, conforme a Política de Privacidade.</span>
+            <span>
+              Concordo com o uso dos meus dados para fins de inscrição e comunicação relacionados à Jornada Professor IA, conforme a{" "}
+              <a href="/politica-de-privacidade" className="font-bold text-brand underline underline-offset-2">Política de Privacidade</a>.
+            </span>
           </label>
 
           {status === "error" && (
-            <p role="alert" className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">{message}</p>
+            <div
+              ref={feedbackRef}
+              tabIndex={-1}
+              role="alert"
+              aria-live="assertive"
+              className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700 outline-none"
+            >
+              {message}
+            </div>
           )}
 
-          <button type="submit" disabled={status === "sending"} className="group inline-flex items-center justify-center gap-3 rounded-full bg-accent px-7 py-4 font-black text-white shadow-xl shadow-blue-200 transition hover:-translate-y-0.5 hover:shadow-2xl disabled:cursor-wait disabled:opacity-60">
+          <button
+            type="submit"
+            disabled={status === "sending"}
+            aria-describedby={status === "error" ? "registration-feedback" : undefined}
+            className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-accent px-7 py-4 font-black text-white shadow-xl shadow-blue-200 transition hover:-translate-y-0.5 hover:shadow-2xl disabled:cursor-wait disabled:opacity-60"
+          >
             {status === "sending" ? "Enviando inscrição..." : "Confirmar minha inscrição gratuita"}
             {status !== "sending" && <ArrowRight size={19} className="transition group-hover:translate-x-1" />}
           </button>
