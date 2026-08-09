@@ -5,8 +5,8 @@
 :root {
   color-scheme: light;
   --ink: #0b1020;
-  --brand: #4f46e5;
-  --accent: #f97316;
+  --brand: #1d4ed8;
+  --accent: #2563eb;
 }
 
 html { scroll-behavior: smooth; }
@@ -19,12 +19,55 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 * { box-sizing: border-box; }
-::selection { background: #c7d2fe; color: #111827; }
+::selection { background: #bfdbfe; color: #0f172a; }
 
-a, button, input, select { -webkit-tap-highlight-color: transparent; }
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
-  outline: 3px solid rgba(79, 70, 229, .35);
+a, button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, .36);
   outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: .75rem;
+  z-index: 1000;
+  transform: translateY(-180%);
+  border-radius: .75rem;
+  background: #0f172a;
+  color: #fff;
+  padding: .75rem 1rem;
+  font-size: .875rem;
+  font-weight: 800;
+  transition: transform .18s ease;
+}
+.skip-link:focus { transform: translateY(0); }
+
+.scroll-top-button {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 55;
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 999px;
+  background: #1d4ed8;
+  color: white;
+  box-shadow: 0 16px 40px rgba(30, 64, 175, .28);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(.75rem);
+  transition: opacity .2s ease, transform .2s ease, background .2s ease;
+}
+.scroll-top-button:hover { background: #1e40af; }
+.scroll-top-button--visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 @keyframes float {
@@ -43,9 +86,33 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .text-balance { text-wrap: balance; }
 .bg-grid {
   background-image:
-    linear-gradient(rgba(79,70,229,.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(79,70,229,.055) 1px, transparent 1px);
+    linear-gradient(rgba(37,99,235,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,.055) 1px, transparent 1px);
   background-size: 34px 34px;
+}
+
+@media (max-width: 767px) {
+  body { overflow-x: hidden; }
+
+  header a[href="#inscricao"] {
+    max-width: 10rem;
+    padding: .7rem .9rem;
+    font-size: .75rem;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  /* A chamada fixa anterior ocupava toda a base da tela e competia com widgets de acessibilidade. */
+  main > a[href="#inscricao"].fixed { display: none !important; }
+
+  .scroll-top-button {
+    right: .8rem;
+    bottom: calc(.8rem + env(safe-area-inset-bottom));
+    width: 2.85rem;
+    height: 2.85rem;
+  }
+
+  [vw].enabled { z-index: 54 !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -54,5 +121,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
   }
 }
