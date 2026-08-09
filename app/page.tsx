@@ -72,11 +72,14 @@ export default function Home() {
     <main className="overflow-hidden bg-white text-ink">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/70 bg-white/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-          <a href="#inicio" className="flex items-center gap-3" aria-label="Professor IA - início">
+          <a href="#inicio" className="flex items-center gap-3" aria-label="IA na Prática Docente - início">
             <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-brand to-blue-800 text-white shadow-lg shadow-blue-200">
               <WandSparkles size={19} />
             </span>
-            <span className="font-black tracking-tight">PROFESSOR <span className="text-brand">IA</span></span>
+            <span className="flex flex-col leading-none">
+              <span className="text-lg font-black tracking-tight text-brand">IA</span>
+              <span className="mt-1 text-[10px] font-extrabold uppercase tracking-[.12em] text-slate-700 sm:text-xs">na Prática Docente</span>
+            </span>
           </a>
           <nav className="hidden items-center gap-7 text-sm font-semibold text-slate-600 md:flex" aria-label="Navegação principal">
             <a className="transition hover:text-brand" href="#beneficios">O que você vai aprender</a>
@@ -278,7 +281,13 @@ export default function Home() {
 
       <footer className="bg-ink px-5 py-12 text-slate-400">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 text-center text-sm md:flex-row md:text-left">
-          <div><strong className="text-white">PROFESSOR <span className="text-blue-400">IA</span></strong><p className="mt-2">Formação docente para a era da Inteligência Artificial.</p></div>
+          <div>
+            <strong className="inline-flex items-baseline gap-1 text-white">
+              <span className="text-lg font-black text-blue-400">IA</span>
+              <span className="font-extrabold">na Prática Docente</span>
+            </strong>
+            <p className="mt-2">Formação docente para a era da Inteligência Artificial.</p>
+          </div>
           <div className="flex items-center gap-2" aria-label="Redes sociais de Sanval Ebert">
             {socialLinks.map(({ label, href, Icon }) => (
               <a
