@@ -1,4 +1,5 @@
 import Image from "next/image";
+import RegistrationForm from "../components/RegistrationForm";
 import {
   ArrowRight,
   BookOpen,
@@ -17,8 +18,6 @@ import {
   Sparkles,
   WandSparkles,
 } from "lucide-react";
-
-const FORM_URL = "https://forms.gle/2wqf6Y5S5UG2mYPA6";
 
 const socialLinks = [
   {
@@ -84,7 +83,7 @@ export default function Home() {
             <a className="transition hover:text-brand" href="#jornada">Jornada</a>
             <a className="transition hover:text-brand" href="#quem-conduz">Quem conduz</a>
           </nav>
-          <a href={FORM_URL} target="_blank" rel="noreferrer" className="rounded-full bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-lg shadow-blue-200 transition hover:-translate-y-0.5 hover:shadow-xl">
+          <a href="#inscricao" className="rounded-full bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-lg shadow-blue-200 transition hover:-translate-y-0.5 hover:shadow-xl">
             Participar gratuitamente
           </a>
         </div>
@@ -107,7 +106,7 @@ export default function Home() {
               Compreenda, experimente e aplique Inteligência Artificial na criação de aulas, materiais, avaliações, feedbacks e novas experiências de aprendizagem.
             </p>
             <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <a href={FORM_URL} target="_blank" rel="noreferrer" className="group inline-flex items-center justify-center gap-3 rounded-full bg-accent px-7 py-4 font-extrabold text-white shadow-xl shadow-blue-200 transition hover:-translate-y-1 hover:shadow-2xl">
+              <a href="#inscricao" className="group inline-flex items-center justify-center gap-3 rounded-full bg-accent px-7 py-4 font-extrabold text-white shadow-xl shadow-blue-200 transition hover:-translate-y-1 hover:shadow-2xl">
                 Quero participar gratuitamente
                 <ArrowRight size={19} className="transition group-hover:translate-x-1" />
               </a>
@@ -262,20 +261,18 @@ export default function Home() {
       <section id="inscricao" className="relative overflow-hidden bg-gradient-to-br from-blue-950 via-brand to-blue-700 py-20 text-white md:py-28">
         <div className="absolute -left-20 top-0 h-80 w-80 rounded-full bg-blue-400/20 blur-3xl" />
         <div className="absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-sky-300/20 blur-3xl" />
-        <div className="relative mx-auto max-w-5xl px-5 text-center lg:px-8">
-          <p className="font-black uppercase tracking-[.18em] text-blue-200">Inscrição gratuita</p>
-          <h2 className="text-balance mx-auto mt-4 max-w-4xl text-4xl font-black md:text-6xl">Dê o próximo passo para transformar a IA em uma aliada da sua prática docente.</h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-blue-100">A inscrição é rápida e feita pelo Google Forms. Ao clicar no botão, você será direcionado para concluir seus dados com segurança.</p>
-          <div className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-3 text-sm font-bold text-blue-50">
-            {["Participação gratuita", "Encontros online", "Conteúdo voltado à prática docente"].map((item) => (
-              <span key={item} className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2"><Check size={16} />{item}</span>
-            ))}
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[.82fr_1.18fr] lg:items-start lg:px-8">
+          <div className="lg:sticky lg:top-28">
+            <p className="font-black uppercase tracking-[.18em] text-blue-200">Inscrição gratuita</p>
+            <h2 className="text-balance mt-4 text-4xl font-black md:text-5xl">Dê o próximo passo para transformar a IA em uma aliada da sua prática docente.</h2>
+            <p className="mt-6 text-lg leading-8 text-blue-100">Agora sua inscrição é feita diretamente no Professor IA, sem sair da página.</p>
+            <div className="mt-8 space-y-4 text-sm font-bold text-blue-50">
+              {["Participação gratuita", "Encontros online", "Conteúdo voltado à prática docente", "Cadastro protegido e sem redirecionamentos"].map((item) => (
+                <div key={item} className="flex items-center gap-3"><span className="grid h-8 w-8 place-items-center rounded-full bg-white/10"><Check size={16} /></span>{item}</div>
+              ))}
+            </div>
           </div>
-          <a href={FORM_URL} target="_blank" rel="noreferrer" className="group mt-10 inline-flex items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-lg font-black text-brand shadow-2xl shadow-blue-950/20 transition hover:-translate-y-1 hover:bg-blue-50">
-            Fazer minha inscrição gratuita
-            <ArrowRight size={20} className="transition group-hover:translate-x-1" />
-          </a>
-          <p className="mt-4 text-sm text-blue-200">O formulário será aberto em uma nova aba.</p>
+          <RegistrationForm />
         </div>
       </section>
 
