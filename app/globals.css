@@ -131,7 +131,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 
 @media (max-width: 420px) {
-  header a[aria-label="Professor IA - início"] > span:last-child {
+  /* Usa a estrutura do logotipo, não o aria-label, para sobreviver a mudanças de marca. */
+  header a[href="#inicio"] > span:last-child {
     display: none;
   }
 }
