@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import AccessibilityTools from "@/components/AccessibilityTools";
 import "./globals.css";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://professor-ia-eosin.vercel.app";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://professor-ia.vercel.app"),
+  metadataBase: new URL(siteUrl),
   title: "Professor IA | Formação docente para a era da Inteligência Artificial",
   description: "Jornada online e gratuita para professores compreenderem e aplicarem Inteligência Artificial no planejamento, na produção de materiais, na avaliação e na aprendizagem.",
   keywords: ["Inteligência Artificial", "formação docente", "IA na educação", "professores", "IA generativa"],
