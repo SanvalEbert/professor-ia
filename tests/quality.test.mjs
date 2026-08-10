@@ -20,11 +20,13 @@ test("evita colisão dos controles flutuantes no mobile", () => {
   assert.match(css, /\[vw\]\.enabled \{ z-index: 54 !important; \}/);
 });
 
-test("cabeçalho se adapta a telas estreitas", () => {
+test("cabeçalho se adapta a telas estreitas mesmo após mudanças de marca", () => {
+  const page = read("app/page.tsx");
   const css = read("app/globals.css");
+  assert.match(page, /aria-label="IA na Prática Docente - início"/);
   assert.match(css, /@media \(max-width: 420px\)/);
-  assert.match(css, /aria-label=\"Professor IA - início\"/);
-  assert.match(css, /display: none/);
+  assert.match(css, /header a\[href="#inicio"\] > span:last-child/);
+  assert.doesNotMatch(css, /aria-label="Professor IA - início"/);
 });
 
 test("usa identidade visual predominantemente azul", () => {
@@ -95,6 +97,43 @@ test("API valida telefone, formato, robôs simples e timeout", () => {
   assert.match(api, /body\.website/);
   assert.match(api, /AbortSignal\.timeout\(8000\)/);
   assert.match(api, /Cache-Control/);
+});
+
+test("fluxo de sucesso leva à confirmação com WhatsApp e evita indexação", () => {
+  const form = read("components/RegistrationForm.tsx");
+  const confirmation = read("app/confirmacao/page.tsx");
+  assert.match(form, /window\.location\.assign\("\/confirmacao"\)/);
+  assert.match(confirmation, /NEXT_PUBLIC_WHATSAPP_GROUP_URL/);
+  assert.match(confirmation, /Entrar no grupo do WhatsApp/);
+  assert.match(confirmation, /index: false/);
+  assert.match(confirmation, /follow: false/);
+});
+
+test("skip link funciona também nas páginas auxiliares", () => {
+  const layout = read("app/layout.tsx");
+  const confirmation = read("app/confirmacao/page.tsx");
+  const privacy = read("app/politica-de-privacidade/page.tsx");
+  assert.match(layout, /href="#inicio"/);
+  assert.match(confirmation, /<main id="inicio"/);
+  assert.match(privacy, /<main id="inicio"/);
+});
+
+test("política de privacidade reflete os campos atuais do cadastro", () => {
+  const privacy = read("app/politica-de-privacidade/page.tsx");
+  for (const item of ["WhatsApp", "cidade", "estado", "instituição de ensino", "experiência com Inteligência Artificial", "parâmetros de campanha"]) {
+    assert.match(privacy, new RegExp(item, "i"));
+  }
+  assert.doesNotMatch(privacy, /Texto inicial para o MVP/);
+  assert.doesNotMatch(privacy, /área de atuação/);
+  assert.doesNotMatch(privacy, /desafio profissional/);
+});
+
+test("metadataBase usa URL pública configurável", () => {
+  const layout = read("app/layout.tsx");
+  const env = read(".env.example");
+  assert.match(layout, /NEXT_PUBLIC_SITE_URL/);
+  assert.match(layout, /professor-ia-eosin\.vercel\.app/);
+  assert.match(env, /NEXT_PUBLIC_SITE_URL=/);
 });
 
 test("usa cards azuis nas áreas de aprendizagem e jornada", () => {
