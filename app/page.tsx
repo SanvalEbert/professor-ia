@@ -123,8 +123,8 @@ export default function Home() {
                 <ArrowRight size={19} className="transition group-hover:translate-x-1" />
               </a>
               <div className="flex items-center gap-3 text-sm font-bold text-slate-600">
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-emerald-50 text-emerald-600"><CalendarDays size={18} /></span>
-                3 encontros online · 22 e 29/08 + 05/09 · 8h30 às 10h
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-emerald-50 text-emerald-600"><CalendarDays size={18} /></span>
+                <span>3 encontros online e gratuitos</span>
               </div>
             </div>
             <div className="mt-10 grid max-w-2xl grid-cols-3 gap-3">
@@ -206,8 +206,11 @@ export default function Home() {
               <p className="font-black uppercase tracking-[.18em] text-brand">Jornada Professor IA</p>
               <h2 className="text-balance mt-4 text-4xl font-black tracking-tight md:text-5xl">Três encontros. Uma progressão pedagógica.</h2>
             </div>
-            <div className="flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-bold text-blue-800 shadow-sm">
-              <CalendarDays size={17} className="text-brand" /> 22 e 29/08 + 05/09 · 8h30 às 10h
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-2xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-bold text-blue-800 shadow-sm sm:rounded-full">
+              <CalendarDays size={17} className="shrink-0 text-brand" />
+              <span>22/08 · 29/08 · 05/09</span>
+              <span className="text-blue-400" aria-hidden="true">·</span>
+              <span>8h30 às 10h</span>
             </div>
           </div>
           <div className="relative mt-14 grid gap-6 lg:grid-cols-3">
