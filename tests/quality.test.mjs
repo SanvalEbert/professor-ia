@@ -136,6 +136,18 @@ test("metadataBase usa URL pública configurável", () => {
   assert.match(env, /NEXT_PUBLIC_SITE_URL=/);
 });
 
+test("exibe datas e horários dos três encontros no topo e na jornada", () => {
+  const page = read("app/page.tsx");
+  assert.match(page, /3 encontros online · 22 e 29\/08 \+ 05\/09 · 8h30 às 10h/);
+  assert.match(page, /date: "22\/08"/);
+  assert.match(page, /date: "29\/08"/);
+  assert.match(page, /date: "05\/09"/);
+  assert.match(page, /dateTime: "2026-08-22"/);
+  assert.match(page, /dateTime: "2026-08-29"/);
+  assert.match(page, /dateTime: "2026-09-05"/);
+  assert.doesNotMatch(page, /Datas divulgadas aos inscritos/);
+});
+
 test("usa cards azuis nas áreas de aprendizagem e jornada", () => {
   const page = read("app/page.tsx");
   assert.match(page, /from-blue-600 via-blue-700 to-blue-900/);
