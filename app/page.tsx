@@ -41,18 +41,27 @@ const meetings = [
   {
     number: "01",
     stage: "Compreender",
+    date: "22/08",
+    dateTime: "2026-08-22",
+    time: "8h30 às 10h",
     title: "Inteligência Artificial e a nova realidade da educação",
     text: "Fundamentos, possibilidades, limites e desafios éticos e pedagógicos.",
   },
   {
     number: "02",
     stage: "Experimentar",
+    date: "29/08",
+    dateTime: "2026-08-29",
+    time: "8h30 às 10h",
     title: "IA na prática: aulas, materiais e avaliações",
     text: "Planejamento, atividades, questões, rubricas e feedbacks com propósito pedagógico.",
   },
   {
     number: "03",
     stage: "Aplicar",
+    date: "05/09",
+    dateTime: "2026-09-05",
+    time: "8h30 às 10h",
     title: "Professor IA: agentes e novas possibilidades",
     text: "Agentes de IA, automação, personalização da aprendizagem e futuro da docência.",
   },
@@ -114,8 +123,8 @@ export default function Home() {
                 <ArrowRight size={19} className="transition group-hover:translate-x-1" />
               </a>
               <div className="flex items-center gap-3 text-sm font-bold text-slate-600">
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-emerald-50 text-emerald-600"><Check size={18} /></span>
-                3 encontros · online · para todo o Brasil
+                <span className="grid h-9 w-9 place-items-center rounded-full bg-emerald-50 text-emerald-600"><CalendarDays size={18} /></span>
+                3 encontros online · 22 e 29/08 + 05/09 · 8h30 às 10h
               </div>
             </div>
             <div className="mt-10 grid max-w-2xl grid-cols-3 gap-3">
@@ -198,7 +207,7 @@ export default function Home() {
               <h2 className="text-balance mt-4 text-4xl font-black tracking-tight md:text-5xl">Três encontros. Uma progressão pedagógica.</h2>
             </div>
             <div className="flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-bold text-blue-800 shadow-sm">
-              <CalendarDays size={17} className="text-brand" /> Datas divulgadas aos inscritos
+              <CalendarDays size={17} className="text-brand" /> 22 e 29/08 + 05/09 · 8h30 às 10h
             </div>
           </div>
           <div className="relative mt-14 grid gap-6 lg:grid-cols-3">
@@ -209,7 +218,13 @@ export default function Home() {
                   <span className="text-6xl font-black text-blue-300/35">{meeting.number}</span>
                   <span className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[.16em] text-blue-100">{meeting.stage}</span>
                 </div>
-                <h3 className="relative mt-7 text-2xl font-black leading-tight">{meeting.title}</h3>
+                <div className="relative mt-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-extrabold text-blue-100">
+                  <CalendarDays size={16} aria-hidden="true" />
+                  <time dateTime={meeting.dateTime}>{meeting.date}</time>
+                  <span aria-hidden="true">·</span>
+                  <span>{meeting.time}</span>
+                </div>
+                <h3 className="relative mt-5 text-2xl font-black leading-tight">{meeting.title}</h3>
                 <p className="relative mt-4 leading-7 text-blue-100">{meeting.text}</p>
                 {index < meetings.length - 1 && <ChevronRight className="absolute -right-5 top-1/2 z-10 hidden -translate-y-1/2 text-blue-400 lg:block" size={34} />}
               </article>
