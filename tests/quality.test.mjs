@@ -169,8 +169,8 @@ test("exibe a Imersão IA e as datas de novembro de 2026", () => {
 
 test("usa o retrato novo e otimizado em ambas as seções", () => {
   const page = read("app/page.tsx");
-  assert.equal((page.match(/src="\\/sanval-imersao\\.webp"/g) || []).length, 2);
-  assert.doesNotMatch(page, /src="\\/San_10\\.jpg"/);
+  assert.equal((page.match(/src="\/sanval-imersao\.webp"/g) || []).length, 2);
+  assert.doesNotMatch(page, /src="\/San_10\.jpg"/);
   const asset = statSync(new URL("../public/sanval-imersao.webp", import.meta.url));
   assert.ok(asset.size > 1000 && asset.size < 100000, "imagem WebP presente e otimizada");
 });
