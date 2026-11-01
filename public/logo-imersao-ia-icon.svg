@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-labelledby="title">
+<title id="title">Imersão IA para Professores</title>
+<defs>
+<linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#0646e9"/><stop offset=".55" stop-color="#0058df"/><stop offset="1" stop-color="#0ba8f9"/></linearGradient>
+<linearGradient id="book" x1="0" x2="1"><stop stop-color="#b4eaff"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
+</defs>
+<rect x="3" y="3" width="194" height="194" rx="40" fill="url(#bg)"/>
+<path d="M150 30l5 15 15 5-15 5-5 15-5-15-15-5 15-5z" fill="#35e4ff"/>
+<path d="M25 76l76-37 76 37-76 37z" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+<path d="M55 91v21c19 11 72 11 91 0V91" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+<path d="M27 78v39m0 0-5 11m5-11 6 11" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23 150c25-10 52-7 77 13 25-20 51-23 77-13l-9 20c-20-5-45-3-68 12-23-15-48-17-68-12z" fill="url(#book)"/>
+<path d="M100 163v19 M39 159c24-2 42 3 61 17m61-17c-24-2-42 3-61 17" stroke="#5dcffc" stroke-width="5" fill="none" stroke-linecap="round"/>
+<rect x="74" y="88" width="54" height="54" rx="11" fill="#0755de" stroke="#ffffff" stroke-width="6"/>
+<path d="M83 79v9m17-10v10m17-9v9M83 142v8m17-8v10m17-10v8M65 99h9m-9 16h9m54-16h9m-9 16h9" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+<text x="101" y="125" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="29" font-weight="800" text-anchor="middle">IA</text>
+</svg>
