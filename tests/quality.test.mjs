@@ -215,7 +215,7 @@ test("Bia aparece com controle acessível e sem reprodução automática", () =>
   const component = read("components/BiaAssistant.tsx");
   const css = read("app/globals.css");
   assert.match(page, /<BiaAssistant \/>/);
-  assert.match(component, /"\/audio\/bia-imersao\.ogg"/);
+  assert.match(component, /"\/audio\/bia-imersao\.wav"/);
   assert.match(component, /await audio\.play\(\)/);
   assert.doesNotMatch(component, /autoPlay/);
   assert.match(component, /Ler a mensagem completa/);
