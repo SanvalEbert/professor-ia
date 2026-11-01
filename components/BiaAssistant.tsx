@@ -152,7 +152,7 @@ export default function BiaAssistant() {
         type="button"
         aria-expanded={open}
         aria-controls="bia-painel"
-        onClick={() => setOpen((old) => !old)}
+        onClick={() => { if (open) close(); else setOpen(true); }}
         className="bia-launcher inline-flex min-h-12 items-center gap-2.5 rounded-full border border-white/50 bg-[#102f77] px-4 py-2.5 text-sm font-bold text-white shadow-[0_8px_32px_rgba(11,31,76,.3)] transition hover:-translate-y-0.5 hover:bg-blue-700"
       >
         <span className="grid h-8 w-8 place-items-center rounded-full bg-blue-400/25"><Headphones size={19} aria-hidden="true" /></span>
