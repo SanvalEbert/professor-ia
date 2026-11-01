@@ -209,3 +209,20 @@ test("não expõe cliente ou chave do Supabase no navegador", () => {
   assert.doesNotMatch(pkg, /@supabase\/supabase-js/);
   assert.doesNotMatch(form, /SUPABASE_/);
 });
+
+test("Bia aparece com controle acessível e sem reprodução automática", () => {
+  const page = read("app/page.tsx");
+  const component = read("components/BiaAssistant.tsx");
+  const css = read("app/globals.css");
+  assert.match(page, /<BiaAssistant \/>/);
+  assert.match(component, /"\/audio\/bia-imersao\.ogg"/);
+  assert.match(component, /await audio\.play\(\)/);
+  assert.doesNotMatch(component, /autoPlay/);
+  assert.match(component, /Ler a mensagem completa/);
+  assert.match(component, /Fechar mensagem da Bia/);
+  assert.match(component, /Fazer inscrição gratuita/);
+  assert.match(component, /17, 18 e 19 de novembro, às 20 horas/);
+  assert.match(css, /\.bia-widget \{ bottom: calc\(5rem/);
+  const file = statSync(new URL("../public/audio/bia-imersao.ogg", import.meta.url));
+  assert.ok(file.size > 10000 && file.size < 200000, "áudio compacto da Bia presente");
+});
