@@ -44,7 +44,7 @@ export default function Confirmacao() {
           href={whatsapp}
           target="_blank"
           rel="noreferrer"
-          className="mt-8 inline-flex items-center justify-center rounded-full bg-green-600 px-7 py-4 font-bold text-white transition hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-600"
+          className="mt-8 inline-flex items-center justify-center rounded-full bg-green-700 px-7 py-4 font-bold text-white transition hover:bg-green-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-600"
         >
           Entrar no grupo do WhatsApp
         </a>

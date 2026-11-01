@@ -126,7 +126,7 @@ export default function Home() {
     <main className="overflow-hidden bg-white text-ink">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/70 bg-white/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-          <a href="#inicio" className="flex items-center gap-3" aria-label="Professor IA - início">
+          <a href="#inicio" className="flex items-center gap-3" aria-label="Professor IA Imersão na Prática Docente, voltar ao início">
             <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-brand to-blue-800 text-white shadow-lg shadow-blue-200">
               <WandSparkles size={19} />
             </span>

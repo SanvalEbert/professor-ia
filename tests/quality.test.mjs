@@ -23,10 +23,10 @@ test("evita colisão dos controles flutuantes no mobile", () => {
 test("cabeçalho se adapta a telas estreitas mesmo após mudanças de marca", () => {
   const page = read("app/page.tsx");
   const css = read("app/globals.css");
-  assert.match(page, /aria-label="Professor IA - início"/);
+  assert.match(page, /aria-label="Professor IA Imersão na Prática Docente, voltar ao início"/);
   assert.match(css, /@media \(max-width: 420px\)/);
   assert.match(css, /header a\[href="#inicio"\] > span:last-child/);
-  assert.doesNotMatch(css, /aria-label="Professor IA - início"/);
+  assert.doesNotMatch(css, /aria-label=/);
 });
 
 test("usa identidade visual predominantemente azul", () => {
@@ -199,7 +199,7 @@ test("tem imagem de compartilhamento, ícones e fonte carregada", () => {
 });
 
 test("contagem regressiva usa o horário de Brasília e trata o pós-evento", async () => {
-  const source = read("components/Countdown.tsx");
+  const source = read("lib/countdown.ts");
   assert.match(source, /2026-11-17T20:00:00-03:00/);
   assert.match(source, /2026-11-19T21:00:00-03:00/);
   assert.match(source, /Esta edição foi encerrada/);
@@ -244,4 +244,15 @@ test("não expõe cliente ou chave do Supabase no navegador", () => {
   const form = read("components/RegistrationForm.tsx");
   assert.doesNotMatch(pkg, /@supabase\/supabase-js/);
   assert.doesNotMatch(form, /SUPABASE_/);
+});
+
+test("envia cabeçalhos básicos de segurança e mantém dependências sem falhas conhecidas fixadas", () => {
+  const config = read("next.config.ts");
+  const pkg = JSON.parse(read("package.json"));
+  for (const header of ["X-Content-Type-Options", "Referrer-Policy", "X-Frame-Options", "Permissions-Policy"]) {
+    assert.match(config, new RegExp(header));
+  }
+  assert.match(config, /poweredByHeader: false/);
+  assert.equal(pkg.dependencies.next, "15.5.28");
+  assert.ok(pkg.overrides?.sharp, "sharp corrigido via overrides");
 });
