@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Bot, Headphones, Pause, Play, RotateCcw, Sparkles, Volume2, X } from "lucide-react";
 
-const AUDIO_SOURCE = "/audio/bia-imersao.ogg";
+const AUDIO_SOURCE = "/audio/bia-imersao.wav";
 
 const transcript = [
   "Seus alunos já estão usando Inteligência Artificial. E você? Já está usando essa tecnologia em suas aulas? Ensinar nunca foi tão empolgante!",
