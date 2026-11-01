@@ -6,16 +6,17 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://professor-ia-eosin.
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Professor IA | Imersão IA na Prática Docente",
+  title: "Imersão IA para Professores | Na Prática Docente",
   description: "Imersão online e gratuita em 17, 18 e 19 de novembro de 2026, das 20h às 21h (horário de Brasília), para explorar e aplicar Inteligência Artificial na prática docente.",
   keywords: ["Inteligência Artificial", "formação docente", "IA na educação", "professores", "IA generativa"],
   authors: [{ name: "Sanval Ebert" }],
+  icons: { icon: "/logo-imersao-ia-icon.svg" },
   openGraph: {
     title: "Imersão IA na Prática Docente",
     description: "Três mentorias online com IA: 17, 18 e 19 de novembro de 2026, das 20h às 21h.",
     type: "website",
     locale: "pt_BR",
-    siteName: "Professor IA",
+    siteName: "Imersão IA para Professores",
   },
   twitter: {
     card: "summary_large_image",
