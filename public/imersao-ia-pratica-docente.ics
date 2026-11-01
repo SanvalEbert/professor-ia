@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Professor IA//Imersao IA na Pratica Docente//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Imersão IA na Prática Docente
+BEGIN:VEVENT
+UID:imersao-ia-2026-encontro-1@professor-ia
+DTSTAMP:20261101T000000Z
+DTSTART:20261117T230000Z
+DTEND:20261118T000000Z
+SUMMARY:Imersão IA na Prática Docente · Encontro 1 (Compreender)
+DESCRIPTION:IA na educação: fundamentos e possibilidades. O link da mentoria é enviado no grupo oficial do WhatsApp.
+LOCATION:Online
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Imersão IA começa em 30 minutos
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:imersao-ia-2026-encontro-2@professor-ia
+DTSTAMP:20261101T000000Z
+DTSTART:20261118T230000Z
+DTEND:20261119T000000Z
+SUMMARY:Imersão IA na Prática Docente · Encontro 2 (Experimentar)
+DESCRIPTION:Oficina: planejar, criar e avaliar com IA. O link da mentoria é enviado no grupo oficial do WhatsApp.
+LOCATION:Online
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Imersão IA começa em 30 minutos
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:imersao-ia-2026-encontro-3@professor-ia
+DTSTAMP:20261101T000000Z
+DTSTART:20261119T230000Z
+DTEND:20261120T000000Z
+SUMMARY:Imersão IA na Prática Docente · Encontro 3 (Aplicar)
+DESCRIPTION:Da ideia à aplicação: agentes e autoria docente. O link da mentoria é enviado no grupo oficial do WhatsApp.
+LOCATION:Online
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Imersão IA começa em 30 minutos
+END:VALARM
+END:VEVENT
+END:VCALENDAR

@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import AccessibilityTools from "@/components/AccessibilityTools";
+import "@fontsource-variable/inter/wght.css";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://professor-ia-eosin.vercel.app";
@@ -22,6 +23,10 @@ export const metadata: Metadata = {
     title: "Imersão IA na Prática Docente",
     description: "Imersão gratuita para professores: três mentorias de uma hora, das 20h às 21h, de 17 a 19 de novembro de 2026.",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#1d4ed8",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
