@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, statSync } from "node:fs";
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
 
@@ -23,7 +23,7 @@ test("evita colisão dos controles flutuantes no mobile", () => {
 test("cabeçalho se adapta a telas estreitas mesmo após mudanças de marca", () => {
   const page = read("app/page.tsx");
   const css = read("app/globals.css");
-  assert.match(page, /aria-label="IA na Prática Docente - início"/);
+  assert.match(page, /aria-label="Professor IA - início"/);
   assert.match(css, /@media \(max-width: 420px\)/);
   assert.match(css, /header a\[href="#inicio"\] > span:last-child/);
   assert.doesNotMatch(css, /aria-label="Professor IA - início"/);
@@ -145,7 +145,7 @@ test("exibe a Imersão IA e as datas de novembro de 2026", () => {
 
   assert.match(page, /Imersão online e gratuita para professores/);
   assert.match(page, /Imersão IA na Prática Docente/);
-  assert.match(page, /17 a 19\/11\/2026 · 8h30 às 10h/);
+  assert.match(page, /17, 18 e 19 de novembro de 2026 · 20h às 21h/);
   assert.match(page, /17, 18 e 19\/11\/2026/);
 
   for (const [date, iso] of [
@@ -158,9 +158,21 @@ test("exibe a Imersão IA e as datas de novembro de 2026", () => {
   }
   assert.doesNotMatch(page, /22\/08|29\/08|05\/09|2026-08-22|2026-08-29|2026-09-05/);
   assert.match(layout, /Imersão IA na Prática Docente/);
+  assert.match(layout, /das 20h às 21h/);
+  assert.match(form, /das 20h às 21h/);
+  assert.match(confirmation, /das 20h às 21h/);
+  assert.doesNotMatch(page + layout + form + confirmation, /8h30 às 10h/);
   assert.match(form, /Imersão IA na Prática Docente/);
   assert.match(confirmation, /Imersão IA na Prática Docente/);
   assert.match(privacy, /Imersão IA na Prática Docente/);
+});
+
+test("usa o retrato novo e otimizado em ambas as seções", () => {
+  const page = read("app/page.tsx");
+  assert.equal((page.match(/src="\\/sanval-imersao\\.webp"/g) || []).length, 2);
+  assert.doesNotMatch(page, /src="\\/San_10\\.jpg"/);
+  const asset = statSync(new URL("../public/sanval-imersao.webp", import.meta.url));
+  assert.ok(asset.size > 1000 && asset.size < 100000, "imagem WebP presente e otimizada");
 });
 
 test("usa cards azuis nas áreas de aprendizagem e jornada", () => {
