@@ -43,7 +43,7 @@ export default function AccessibilityTools() {
         onLoad={initializeVLibras}
       />
 
-      <div {...({ vw: "" } as Record<string, string>)} className="enabled" aria-label="Acessibilidade em Libras">
+      <div {...({ vw: "" } as Record<string, string>)} className="enabled">
         <div {...({ "vw-access-button": "" } as Record<string, string>)} className="active" />
         <div {...({ "vw-plugin-wrapper": "" } as Record<string, string>)}>
           <div className="vw-plugin-top-wrapper" />

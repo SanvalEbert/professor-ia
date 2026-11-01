@@ -23,10 +23,10 @@ test("evita colisão dos controles flutuantes no mobile", () => {
 test("cabeçalho se adapta a telas estreitas mesmo após mudanças de marca", () => {
   const page = read("app/page.tsx");
   const css = read("app/globals.css");
-  assert.match(page, /aria-label="Professor IA - início"/);
+  assert.match(page, /aria-label="Professor IA Imersão na Prática Docente, voltar ao início"/);
   assert.match(css, /@media \(max-width: 420px\)/);
   assert.match(css, /header a\[href="#inicio"\] > span:last-child/);
-  assert.doesNotMatch(css, /aria-label="Professor IA - início"/);
+  assert.doesNotMatch(css, /aria-label=/);
 });
 
 test("usa identidade visual predominantemente azul", () => {
@@ -145,7 +145,8 @@ test("exibe a Imersão IA e as datas de novembro de 2026", () => {
 
   assert.match(page, /Imersão online e gratuita para professores/);
   assert.match(page, /Imersão IA na Prática Docente/);
-  assert.match(page, /17, 18 e 19 de novembro de 2026 · 20h às 21h/);
+  assert.match(page, /17, 18 e 19 de novembro de 2026/);
+  assert.match(page, /<span className="whitespace-nowrap">20h às 21h<\/span>/);
   assert.match(page, /17, 18 e 19\/11\/2026/);
 
   for (const [date, iso] of [
@@ -167,18 +168,60 @@ test("exibe a Imersão IA e as datas de novembro de 2026", () => {
   assert.match(privacy, /Imersão IA na Prática Docente/);
 });
 
-test("usa o retrato novo e otimizado em ambas as seções", () => {
+test("usa retratos otimizados e distintos no topo e em Quem conduz", () => {
   const page = read("app/page.tsx");
-  assert.equal((page.match(/src="\/sanval-imersao\.webp"/g) || []).length, 2);
+  assert.equal((page.match(/src="\/sanval-imersao\.webp"/g) || []).length, 1);
+  assert.equal((page.match(/src="\/sanval-perfil\.webp"/g) || []).length, 1);
   assert.doesNotMatch(page, /src="\/San_10\.jpg"/);
-  const asset = statSync(new URL("../public/sanval-imersao.webp", import.meta.url));
-  assert.ok(asset.size > 1000 && asset.size < 100000, "imagem WebP presente e otimizada");
+  for (const file of ["sanval-imersao.webp", "sanval-perfil.webp"]) {
+    const asset = statSync(new URL(`../public/${file}`, import.meta.url));
+    assert.ok(asset.size > 1000 && asset.size < 100000, `${file} presente e otimizado`);
+  }
 });
 
-test("usa cards azuis nas áreas de aprendizagem e jornada", () => {
+test("reserva o azul intenso para a jornada e usa cards claros nos benefícios", () => {
   const page = read("app/page.tsx");
   assert.match(page, /from-blue-600 via-blue-700 to-blue-900/);
   assert.match(page, /from-blue-950 via-blue-900 to-blue-700/);
+  assert.match(page, /border-blue-100 bg-white p-6/);
+  assert.match(page, /Você sai com/);
+});
+
+test("tem imagem de compartilhamento, ícones e fonte carregada", () => {
+  const og = read("app/opengraph-image.tsx");
+  const layout = read("app/layout.tsx");
+  assert.match(og, /ImageResponse/);
+  assert.match(og, /1200/);
+  assert.match(og, /17, 18 e 19 de novembro/);
+  assert.ok(statSync(new URL("../app/icon.svg", import.meta.url)).size > 0);
+  assert.match(read("app/apple-icon.tsx"), /ImageResponse/);
+  assert.match(layout, /@fontsource-variable\/inter/);
+});
+
+test("contagem regressiva usa o horário de Brasília e trata o pós-evento", async () => {
+  const source = read("lib/countdown.ts");
+  assert.match(source, /2026-11-17T20:00:00-03:00/);
+  assert.match(source, /2026-11-19T21:00:00-03:00/);
+  assert.match(source, /Esta edição foi encerrada/);
+});
+
+test("página responde dúvidas e mostra para quem é", () => {
+  const page = read("app/page.tsx");
+  assert.match(page, /id="para-quem"/);
+  assert.match(page, /id="duvidas"/);
+  assert.match(page, /<details/);
+  assert.match(page, /Preciso ter experiência com IA\?/);
+});
+
+test("confirmação oferece agenda com os três encontros", () => {
+  const confirmation = read("app/confirmacao/page.tsx");
+  const ics = read("public/imersao-ia-pratica-docente.ics");
+  assert.match(confirmation, /calendar\.google\.com/);
+  assert.match(confirmation, /imersao-ia-pratica-docente\.ics/);
+  assert.equal((ics.match(/BEGIN:VEVENT/g) || []).length, 3);
+  for (const start of ["20261117T230000Z", "20261118T230000Z", "20261119T230000Z"]) {
+    assert.match(ics, new RegExp(`DTSTART:${start}`));
+  }
 });
 
 test("usa vírgula no título sobre IA como aliada", () => {
@@ -201,4 +244,15 @@ test("não expõe cliente ou chave do Supabase no navegador", () => {
   const form = read("components/RegistrationForm.tsx");
   assert.doesNotMatch(pkg, /@supabase\/supabase-js/);
   assert.doesNotMatch(form, /SUPABASE_/);
+});
+
+test("envia cabeçalhos básicos de segurança e mantém dependências sem falhas conhecidas fixadas", () => {
+  const config = read("next.config.ts");
+  const pkg = JSON.parse(read("package.json"));
+  for (const header of ["X-Content-Type-Options", "Referrer-Policy", "X-Frame-Options", "Permissions-Policy"]) {
+    assert.match(config, new RegExp(header));
+  }
+  assert.match(config, /poweredByHeader: false/);
+  assert.equal(pkg.dependencies.next, "15.5.28");
+  assert.ok(pkg.overrides?.sharp, "sharp corrigido via overrides");
 });
