@@ -144,7 +144,7 @@ test("exibe a Imersão IA e as datas de novembro de 2026", () => {
   const privacy = read("app/politica-de-privacidade/page.tsx");
 
   assert.match(page, /Imersão online e gratuita para professores/);
-  assert.match(page, /Imersão Professor IA/);
+  assert.match(page, /Imersão IA na Prática Docente/);
   assert.match(page, /17 a 19\/11\/2026 · 8h30 às 10h/);
   assert.match(page, /17, 18 e 19\/11\/2026/);
 
