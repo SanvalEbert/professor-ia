@@ -203,7 +203,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
             <div className="max-w-3xl">
-              <p className="font-black uppercase tracking-[.18em] text-brand">Imersão Professor IA</p>
+              <p className="font-black uppercase tracking-[.18em] text-brand">Imersão IA na Prática Docente</p>
               <h2 className="text-balance mt-4 text-4xl font-black tracking-tight md:text-5xl">Três dias. Uma proposta para levar à sala de aula.</h2>
             </div>
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-2xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-bold text-blue-800 shadow-sm sm:rounded-full">
