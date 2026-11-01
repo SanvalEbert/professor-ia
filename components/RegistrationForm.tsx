@@ -71,8 +71,8 @@ export default function RegistrationForm() {
     <div className="rounded-[2rem] border border-white/30 bg-white p-5 text-left text-ink shadow-2xl sm:p-7 md:p-9">
       <div className="mb-7">
         <p className="text-sm font-black uppercase tracking-[.14em] text-brand">Inscrição</p>
-        <h3 className="mt-2 text-2xl font-black md:text-3xl">Professor IA: transforme sua prática docente com Inteligência Artificial</h3>
-        <p className="mt-3 leading-7 text-slate-600">Por favor, preencha o formulário abaixo e logo confirmaremos a sua inscrição.</p>
+        <h3 className="mt-2 text-2xl font-black md:text-3xl">Imersão IA na Prática Docente</h3>
+        <p className="mt-3 leading-7 text-slate-600">Participe gratuitamente nos dias 17, 18 e 19 de novembro de 2026, das 8h30 às 10h. Preencha os dados para confirmar sua inscrição.</p>
       </div>
 
       {status === "success" ? (
