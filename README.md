@@ -5,8 +5,8 @@ Projeto de formação docente online e gratuita, idealizado por **Sanval Ebert**
 ## Próxima edição
 
 - **Datas:** 17, 18 e 19 de novembro de 2026 (terça, quarta e quinta-feira).
-- **Horário:** 8h30 às 10h (horário de Brasília).
-- **Formato:** três encontros online e gratuitos.
+- **Horário:** 20h às 21h (horário de Brasília), com 1h de duração por dia.
+- **Formato:** três mentorias online e gratuitas, ao vivo.
 - **Percurso:** compreender, experimentar e aplicar Inteligência Artificial à prática docente.
 - **Produção:** uma proposta de atividade ou recurso pedagógico com IA, adaptada ao contexto do participante.
 
