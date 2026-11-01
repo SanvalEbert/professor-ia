@@ -1,5 +1,6 @@
 import Image from "next/image";
 import RegistrationForm from "../components/RegistrationForm";
+import BiaAssistant from "../components/BiaAssistant";
 import {
   ArrowRight,
   BookOpen,
@@ -325,6 +326,7 @@ export default function Home() {
           <p>Uma iniciativa de Sanval Ebert · <a href="/politica-de-privacidade" className="underline transition hover:text-white">Política de Privacidade</a></p>
         </div>
       </footer>
+      <BiaAssistant />
     </main>
   );
 }
