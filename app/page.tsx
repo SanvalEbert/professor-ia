@@ -81,13 +81,13 @@ export default function Home() {
     <main className="overflow-hidden bg-white text-ink">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/70 bg-white/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-          <a href="#inicio" className="flex items-center gap-3" aria-label="IA na Prática Docente - início">
+          <a href="#inicio" className="flex items-center gap-3" aria-label="Professor IA - início">
             <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-brand to-blue-800 text-white shadow-lg shadow-blue-200">
               <WandSparkles size={19} />
             </span>
             <span className="flex flex-col leading-none">
-              <span className="text-lg font-black tracking-tight text-brand">IA</span>
-              <span className="mt-1 text-[10px] font-extrabold uppercase tracking-[.12em] text-slate-700 sm:text-xs">na Prática Docente</span>
+              <span className="text-lg font-black tracking-tight text-ink">Professor <span className="text-brand">IA</span></span>
+              <span className="mt-1 text-[10px] font-extrabold uppercase tracking-[.12em] text-slate-700 sm:text-xs">Imersão na Prática Docente</span>
             </span>
           </a>
           <nav className="hidden items-center gap-7 text-sm font-semibold text-slate-600 md:flex" aria-label="Navegação principal">
@@ -124,7 +124,7 @@ export default function Home() {
               </a>
               <div className="flex items-center gap-3 text-sm font-bold text-slate-600">
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-emerald-50 text-emerald-600"><CalendarDays size={18} /></span>
-                <span>17, 18 e 19 de novembro · 20h às 21h</span>
+                <span>17, 18 e 19 de novembro de 2026 · 20h às 21h</span>
               </div>
             </div>
             <div className="mt-10 grid max-w-2xl grid-cols-3 gap-3">
