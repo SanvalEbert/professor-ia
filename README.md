@@ -1,4 +1,4 @@
-# Professor IA — Imersão IA na Prática Docente
+# Imersão IA para Professores — Na Prática Docente
 
 Projeto de formação docente online e gratuita, idealizado por **Sanval Ebert**.
 
