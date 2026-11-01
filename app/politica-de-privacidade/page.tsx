@@ -24,7 +24,7 @@ export default function PoliticaDePrivacidade() {
 
       <h2 className="mt-8 text-2xl font-bold text-ink">Direitos e contato</h2>
       <p className="mt-3 leading-8">
-        Você pode solicitar acesso, correção ou exclusão dos dados fornecidos e pode pedir a interrupção das comunicações relacionadas à jornada. Para isso, utilize os canais profissionais disponibilizados na seção “Quem conduz” da página principal.
+        Você pode solicitar acesso, correção ou exclusão dos dados fornecidos e pode pedir a interrupção das comunicações relacionadas à imersão. Para isso, utilize os canais profissionais disponibilizados na seção “Quem conduz” da página principal.
       </p>
 
       <p className="mt-10 rounded-2xl bg-blue-50 p-4 text-sm leading-6 text-blue-900">
