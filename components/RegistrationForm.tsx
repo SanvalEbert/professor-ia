@@ -157,7 +157,7 @@ export default function RegistrationForm() {
           <label className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4 text-sm leading-6 text-slate-600">
             <input name="consentimento_lgpd" type="checkbox" value="true" required className="mt-1 h-4 w-4 shrink-0 accent-blue-600" />
             <span>
-              Concordo com o uso dos meus dados para fins de inscrição e comunicação relacionados à Jornada Professor IA, conforme a{" "}
+              Concordo com o uso dos meus dados para fins de inscrição e comunicação relacionados à Imersão IA na Prática Docente, conforme a{" "}
               <a href="/politica-de-privacidade" className="font-bold text-brand underline underline-offset-2">Política de Privacidade</a>.
             </span>
           </label>
