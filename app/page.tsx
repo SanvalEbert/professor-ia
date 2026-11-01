@@ -16,7 +16,6 @@ import {
   MessageSquareText,
   Scale,
   Sparkles,
-  WandSparkles,
 } from "lucide-react";
 
 const socialLinks = [
@@ -81,22 +80,24 @@ export default function Home() {
     <main className="overflow-hidden bg-white text-ink">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/70 bg-white/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-          <a href="#inicio" className="flex items-center gap-3" aria-label="Professor IA - início">
-            <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-brand to-blue-800 text-white shadow-lg shadow-blue-200">
-              <WandSparkles size={19} />
-            </span>
-            <span className="flex flex-col leading-none">
-              <span className="text-lg font-black tracking-tight text-ink">Professor <span className="text-brand">IA</span></span>
-              <span className="mt-1 text-[10px] font-extrabold uppercase tracking-[.12em] text-slate-700 sm:text-xs">Imersão na Prática Docente</span>
-            </span>
+          <a href="#inicio" className="flex min-w-0 shrink-0 items-center" aria-label="Imersão IA para Professores - início">
+            <Image
+              src="/logo-imersao-ia.svg"
+              width={1120}
+              height={235}
+              alt="Imersão IA para Professores — na Prática Docente"
+              priority
+              className="block h-auto w-[169px] sm:w-[270px] lg:w-[314px] xl:w-[332px]"
+            />
           </a>
-          <nav className="hidden items-center gap-7 text-sm font-semibold text-slate-600 md:flex" aria-label="Navegação principal">
+          <nav className="hidden items-center gap-5 text-sm font-semibold text-slate-600 lg:flex" aria-label="Navegação principal">
             <a className="transition hover:text-brand" href="#beneficios">O que você vai aprender</a>
             <a className="transition hover:text-brand" href="#jornada">Imersão</a>
             <a className="transition hover:text-brand" href="#quem-conduz">Quem conduz</a>
           </nav>
-          <a href="#inscricao" className="rounded-full bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-lg shadow-blue-200 transition hover:-translate-y-0.5 hover:shadow-xl">
-            Participar gratuitamente
+          <a href="#inscricao" className="shrink-0 rounded-full bg-accent px-4 py-3 text-sm font-extrabold text-white shadow-lg shadow-blue-200 transition hover:-translate-y-0.5 hover:shadow-xl sm:px-5">
+            <span className="sm:hidden">Inscreva-se</span>
+            <span className="hidden sm:inline">Participar gratuitamente</span>
           </a>
         </div>
       </header>
