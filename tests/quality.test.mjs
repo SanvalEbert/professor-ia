@@ -136,16 +136,31 @@ test("metadataBase usa URL pública configurável", () => {
   assert.match(env, /NEXT_PUBLIC_SITE_URL=/);
 });
 
-test("exibe datas e horários dos três encontros no topo e na jornada", () => {
+test("exibe a Imersão IA e as datas de novembro de 2026", () => {
   const page = read("app/page.tsx");
-  assert.match(page, /3 encontros online · 22 e 29\/08 \+ 05\/09 · 8h30 às 10h/);
-  assert.match(page, /date: "22\/08"/);
-  assert.match(page, /date: "29\/08"/);
-  assert.match(page, /date: "05\/09"/);
-  assert.match(page, /dateTime: "2026-08-22"/);
-  assert.match(page, /dateTime: "2026-08-29"/);
-  assert.match(page, /dateTime: "2026-09-05"/);
-  assert.doesNotMatch(page, /Datas divulgadas aos inscritos/);
+  const layout = read("app/layout.tsx");
+  const form = read("components/RegistrationForm.tsx");
+  const confirmation = read("app/confirmacao/page.tsx");
+  const privacy = read("app/politica-de-privacidade/page.tsx");
+
+  assert.match(page, /Imersão online e gratuita para professores/);
+  assert.match(page, /Imersão Professor IA/);
+  assert.match(page, /17 a 19\/11\/2026 · 8h30 às 10h/);
+  assert.match(page, /17, 18 e 19\/11\/2026/);
+
+  for (const [date, iso] of [
+    ["17/11", "2026-11-17"],
+    ["18/11", "2026-11-18"],
+    ["19/11", "2026-11-19"],
+  ]) {
+    assert.ok(page.includes(`date: "${date}"`));
+    assert.ok(page.includes(`dateTime: "${iso}"`));
+  }
+  assert.doesNotMatch(page, /22\/08|29\/08|05\/09|2026-08-22|2026-08-29|2026-09-05/);
+  assert.match(layout, /Imersão IA na Prática Docente/);
+  assert.match(form, /Imersão IA na Prática Docente/);
+  assert.match(confirmation, /Imersão IA na Prática Docente/);
+  assert.match(privacy, /Imersão IA na Prática Docente/);
 });
 
 test("usa cards azuis nas áreas de aprendizagem e jornada", () => {
