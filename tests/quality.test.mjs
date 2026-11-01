@@ -20,13 +20,20 @@ test("evita colisão dos controles flutuantes no mobile", () => {
   assert.match(css, /\[vw\]\.enabled \{ z-index: 54 !important; \}/);
 });
 
-test("cabeçalho se adapta a telas estreitas mesmo após mudanças de marca", () => {
+test("cabeçalho usa a nova logo vetorial e se adapta ao celular", () => {
   const page = read("app/page.tsx");
+  const layout = read("app/layout.tsx");
   const css = read("app/globals.css");
-  assert.match(page, /aria-label="Professor IA - início"/);
-  assert.match(css, /@media \(max-width: 420px\)/);
-  assert.match(css, /header a\[href="#inicio"\] > span:last-child/);
-  assert.doesNotMatch(css, /aria-label="Professor IA - início"/);
+
+  assert.match(page, /aria-label="Imersão IA para Professores - início"/);
+  assert.match(page, /src="\/logo-imersao-ia\.svg"/);
+  assert.match(page, /className="sm:hidden">Inscreva-se/);
+  assert.doesNotMatch(page, /Professor IA/);
+  assert.match(layout, /Imersão IA para Professores/);
+  assert.match(layout, /logo-imersao-ia-icon\.svg/);
+  assert.doesNotMatch(css, /header a\[href="#inicio"\] > span:last-child/);
+  assert.ok(statSync(new URL("../public/logo-imersao-ia.svg", import.meta.url)).size > 1000);
+  assert.ok(statSync(new URL("../public/logo-imersao-ia-icon.svg", import.meta.url)).size > 1000);
 });
 
 test("usa identidade visual predominantemente azul", () => {
@@ -157,7 +164,7 @@ test("exibe a Imersão IA e as datas de novembro de 2026", () => {
     assert.ok(page.includes(`dateTime: "${iso}"`));
   }
   assert.doesNotMatch(page, /22\/08|29\/08|05\/09|2026-08-22|2026-08-29|2026-09-05/);
-  assert.match(layout, /Imersão IA na Prática Docente/);
+  assert.match(layout, /Imersão IA para Professores/);
   assert.match(layout, /das 20h às 21h/);
   assert.match(form, /das 20h às 21h/);
   assert.match(confirmation, /das 20h às 21h/);
