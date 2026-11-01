@@ -130,13 +130,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   }
 }
 
-@media (max-width: 420px) {
-  /* Usa a estrutura do logotipo, não o aria-label, para sobreviver a mudanças de marca. */
-  header a[href="#inicio"] > span:last-child {
-    display: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
