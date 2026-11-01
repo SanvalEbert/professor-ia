@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
     const duplicate = response.status === 409 || detail.includes("23505") || detail.toLowerCase().includes("duplicate");
 
     if (duplicate) {
-      return json({ error: "Este e-mail já está inscrito na Jornada Professor IA." }, 409);
+      return json({ error: "Este e-mail já está inscrito na Imersão IA na Prática Docente." }, 409);
     }
 
     console.error("Supabase recusou a inscrição:", response.status, detail.slice(0, 500));

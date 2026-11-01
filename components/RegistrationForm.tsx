@@ -71,8 +71,8 @@ export default function RegistrationForm() {
     <div className="rounded-[2rem] border border-white/30 bg-white p-5 text-left text-ink shadow-2xl sm:p-7 md:p-9">
       <div className="mb-7">
         <p className="text-sm font-black uppercase tracking-[.14em] text-brand">Inscrição</p>
-        <h3 className="mt-2 text-2xl font-black md:text-3xl">Professor IA: transforme sua prática docente com Inteligência Artificial</h3>
-        <p className="mt-3 leading-7 text-slate-600">Por favor, preencha o formulário abaixo e logo confirmaremos a sua inscrição.</p>
+        <h3 className="mt-2 text-2xl font-black md:text-3xl">Imersão IA na Prática Docente</h3>
+        <p className="mt-3 leading-7 text-slate-600">Participe gratuitamente das três mentorias de uma hora, nos dias 17, 18 e 19 de novembro de 2026, das 20h às 21h (horário de Brasília). Preencha os dados para confirmar sua inscrição.</p>
       </div>
 
       {status === "success" ? (
@@ -157,7 +157,7 @@ export default function RegistrationForm() {
           <label className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4 text-sm leading-6 text-slate-600">
             <input name="consentimento_lgpd" type="checkbox" value="true" required className="mt-1 h-4 w-4 shrink-0 accent-blue-600" />
             <span>
-              Concordo com o uso dos meus dados para fins de inscrição e comunicação relacionados à Jornada Professor IA, conforme a{" "}
+              Concordo com o uso dos meus dados para fins de inscrição e comunicação relacionados à Imersão IA na Prática Docente, conforme a{" "}
               <a href="/politica-de-privacidade" className="font-bold text-brand underline underline-offset-2">Política de Privacidade</a>.
             </span>
           </label>
