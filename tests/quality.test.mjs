@@ -223,6 +223,6 @@ test("Bia aparece com controle acessível e sem reprodução automática", () =>
   assert.match(component, /Fazer inscrição gratuita/);
   assert.match(component, /17, 18 e 19 de novembro, às 20 horas/);
   assert.match(css, /\.bia-widget \{ bottom: calc\(5rem/);
-  const file = statSync(new URL("../public/audio/bia-imersao.ogg", import.meta.url));
-  assert.ok(file.size > 10000 && file.size < 200000, "áudio compacto da Bia presente");
+  const file = statSync(new URL("../public/audio/bia-imersao.wav", import.meta.url));
+  assert.ok(file.size > 2000000 && file.size < 4000000, "áudio WAV original da Bia presente");
 });
