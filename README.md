@@ -18,7 +18,7 @@ Oferecer uma experiência prática e orientada à autoria docente, com exploraç
 
 A Mia abre automaticamente após um breve intervalo em um painel compacto. O visitante pode recolher o painel e reabri-lo pelo botão flutuante. O áudio da usuária é mantido em `public/audio/bia-imersao.wav` (original em WAV) e só começa após a interação com o botão **Ouvir a Mia**, para respeitar a política de reprodução dos navegadores e a preferência do visitante.
 
-A identidade visual da Mia utiliza um selo ilustrado próprio (`public/mia-seal.svg`), com personagem e headset. O lançador compacto apresenta "Fale com a Mia" e "Assistente educacional". O visitante pode pausar, retomar, ouvir novamente, ler a transcrição, fechar o painel ou ir diretamente para a inscrição. O widget pode ser aberto e recolhido a qualquer momento durante a visita.
+A identidade visual da Mia utiliza um selo ilustrado próprio (`public/mia-seal.svg`), com personagem e headset. O lançador compacto apresenta "Ouça o recado da Mia" e "Um convite especial para você", sem sugerir conversação com a personagem. O visitante pode pausar, retomar, ouvir novamente, ler a transcrição, fechar o painel ou ir diretamente para a inscrição. O widget pode ser aberto e recolhido a qualquer momento durante a visita.
 
 ## Inscrições
 

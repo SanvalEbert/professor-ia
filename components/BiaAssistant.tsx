@@ -77,7 +77,7 @@ export default function MiaAssistant() {
   };
 
   return (
-    <aside className={`bia-widget fixed left-3 z-[56] w-[min(19rem,calc(100vw-1.5rem))] sm:left-5 ${visible ? "opacity-100" : "pointer-events-none opacity-0"}`} aria-label="Mia, assistente virtual da imersão">
+    <aside className={`bia-widget fixed left-3 z-[56] w-[min(19rem,calc(100vw-1.5rem))] sm:left-5 ${visible ? "opacity-100" : "pointer-events-none opacity-0"}`} aria-label="Recado em áudio da Mia sobre a imersão">
       <audio
         ref={audioRef}
         src={AUDIO_SOURCE}
@@ -102,7 +102,7 @@ export default function MiaAssistant() {
                 <Image src="/mia-seal.svg" width={48} height={48} alt="" aria-hidden="true" className="h-12 w-12" />
               </span>
               <div className="min-w-0 flex-1">
-                <p className="text-xs font-bold uppercase tracking-[.16em] text-blue-200">Assistente virtual</p>
+                <p className="text-xs font-bold uppercase tracking-[.16em] text-blue-200">Recado da Mia</p>
                 <h2 className="text-lg font-black">Oi, eu sou a Mia!</h2>
                 <p className="mt-1 text-xs leading-5 text-blue-50">Tenho um convite especial para você, professor(a).</p>
               </div>
@@ -149,7 +149,7 @@ export default function MiaAssistant() {
         type="button"
         aria-expanded={open}
         aria-controls="mia-painel"
-        aria-label={open ? "Recolher a mensagem da Mia" : "Abrir a mensagem de áudio da Mia"}
+        aria-label={open ? "Recolher o recado da Mia" : "Abrir o recado da Mia"}
         onClick={() => { if (open) close(); else setOpen(true); }}
         className="bia-launcher mia-launcher group relative inline-flex min-h-[4.25rem] max-w-full items-center gap-2.5 rounded-full border border-blue-200 bg-white px-2 py-1.5 pr-4 text-left shadow-[0_10px_34px_rgba(13,49,119,.20)] transition duration-200 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-[0_14px_38px_rgba(13,49,119,.27)]"
       >
@@ -157,8 +157,8 @@ export default function MiaAssistant() {
           <Image src="/mia-seal.svg" width={48} height={48} alt="" className="h-12 w-12" />
         </span>
         <span className="min-w-0 leading-tight">
-          <span className="block whitespace-nowrap text-sm font-extrabold tracking-tight text-blue-800">Fale com a Mia</span>
-          <span className="mt-0.5 block whitespace-nowrap text-[11px] font-semibold text-slate-500">Assistente educacional</span>
+          <span className="block whitespace-nowrap text-sm font-extrabold tracking-tight text-blue-800">Ouça o recado da Mia</span>
+          <span className="mt-0.5 block whitespace-nowrap text-[11px] font-semibold text-slate-500">Um convite especial para você</span>
         </span>
         <span className="mia-sparkle pointer-events-none absolute -right-1 -top-1 h-3.5 w-3.5 rounded-full bg-sky-400 ring-[3px] ring-white" aria-hidden="true" />
       </button>
