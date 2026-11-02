@@ -123,7 +123,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
   body { overflow-x: hidden; }
 
-  header > div {
+  header > .header-main-row {
     gap: .75rem;
     padding-left: .85rem !important;
     padding-right: .85rem !important;

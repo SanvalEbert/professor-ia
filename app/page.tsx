@@ -20,6 +20,11 @@ import {
 
 const socialLinks = [
   {
+    label: "Instagram",
+    href: "https://www.instagram.com/sanvalebert/",
+    Icon: Instagram,
+  },
+  {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/msc-sanval-ebert/",
     Icon: Linkedin,
@@ -28,11 +33,6 @@ const socialLinks = [
     label: "ResearchGate",
     href: "https://www.researchgate.net/profile/Sanval-Ebert-De-Santos?ev=hdr_xprf",
     Icon: BookOpen,
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/sanvalebert/",
-    Icon: Instagram,
   },
 ] as const;
 
@@ -75,11 +75,35 @@ const benefits = [
   [Scale, "Agir com ética", "Discuta autoria, privacidade, regulação e pensamento crítico."],
 ] as const;
 
+function HeaderSocialLinks() {
+  return (
+    <nav className="flex items-center gap-1.5" aria-label="Redes sociais de Sanval Ebert no cabeçalho">
+      {socialLinks.map(({ label, href, Icon }) => (
+        <a
+          key={label}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Abrir ${label} de Sanval Ebert em nova aba`}
+          title={label}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-blue-100 bg-blue-50/70 text-blue-800 transition hover:border-blue-300 hover:bg-blue-100 hover:text-brand focus-visible:ring-2 focus-visible:ring-blue-500 lg:h-9 lg:w-9"
+        >
+          {label === "ResearchGate" ? (
+            <span aria-hidden="true" className="text-[11px] font-black tracking-tight">RG</span>
+          ) : (
+            <Icon size={18} aria-hidden="true" />
+          )}
+        </a>
+      ))}
+    </nav>
+  );
+}
+
 export default function Home() {
   return (
     <main className="overflow-hidden bg-white text-ink">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/70 bg-white/85 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-5 sm:py-4 lg:px-8">
+        <div className="header-main-row mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-5 sm:py-4 lg:px-8">
           <a href="#inicio" className="flex min-w-0 items-center gap-2 sm:shrink-0 sm:gap-0" aria-label="Inteligência Artificial na Prática Docente - início">
             <Image
               src="/logo-ia-pratica-icon.svg"
@@ -103,15 +127,24 @@ export default function Home() {
               className="hidden h-auto w-[250px] sm:block lg:w-[310px] xl:w-[340px]"
             />
           </a>
-          <nav className="hidden items-center gap-5 text-sm font-semibold text-slate-600 lg:flex" aria-label="Navegação principal">
+          <nav className="hidden items-center gap-4 text-sm font-semibold text-slate-600 xl:flex" aria-label="Navegação principal">
             <a className="transition hover:text-brand" href="#beneficios">O que você vai aprender</a>
             <a className="transition hover:text-brand" href="#jornada">Imersão</a>
             <a className="transition hover:text-brand" href="#quem-conduz">Quem conduz</a>
           </nav>
+          <div className="hidden shrink-0 lg:flex">
+            <HeaderSocialLinks />
+          </div>
           <a href="#inscricao" className="shrink-0 rounded-full bg-accent px-3 py-2.5 text-xs font-extrabold text-white shadow-lg shadow-blue-200 transition hover:-translate-y-0.5 hover:shadow-xl sm:px-5 sm:py-3 sm:text-sm">
             <span className="sm:hidden">Inscreva-se</span>
             <span className="hidden sm:inline">Participar gratuitamente</span>
           </a>
+        </div>
+        <div className="border-t border-blue-100/70 bg-blue-50/65 lg:hidden">
+          <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-1.5 sm:px-5">
+            <span className="text-[11px] font-extrabold uppercase tracking-[.12em] text-slate-600">Acompanhe minha trajetória</span>
+            <HeaderSocialLinks />
+          </div>
         </div>
       </header>
 

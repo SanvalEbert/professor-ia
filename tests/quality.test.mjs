@@ -204,6 +204,20 @@ test("exibe LinkedIn, ResearchGate e Instagram sem GitHub", () => {
   assert.doesNotMatch(page, /github\.com/);
 });
 
+test("cabeçalho exibe Instagram, LinkedIn e ResearchGate sem competir com inscrição no mobile", () => {
+  const page = read("app/page.tsx");
+  const css = read("app/globals.css");
+  assert.match(page, /function HeaderSocialLinks\(\)/);
+  assert.equal((page.match(/<HeaderSocialLinks \/>/g) || []).length, 2);
+  assert.match(page, /Acompanhe minha trajetória/);
+  assert.match(page, /aria-label="Redes sociais de Sanval Ebert no cabeçalho"/);
+  assert.match(page, /className="header-main-row/);
+  assert.match(page, /lg:hidden/);
+  assert.match(page, /label === "ResearchGate"/);
+  assert.match(page, /rel="noopener noreferrer"/);
+  assert.match(css, /header > \.header-main-row/);
+});
+
 test("não expõe cliente ou chave do Supabase no navegador", () => {
   const pkg = read("package.json");
   const form = read("components/RegistrationForm.tsx");
