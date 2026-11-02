@@ -213,9 +213,9 @@ test("não expõe cliente ou chave do Supabase no navegador", () => {
 
 test("Mia aparece com controle acessível e sem reprodução automática", () => {
   const page = read("app/page.tsx");
-  const component = read("components/MiaAssistant.tsx");
+  const component = read("components/BiaAssistant.tsx");
   const css = read("app/globals.css");
-  assert.match(page, /<MiaAssistant \/>/);
+  assert.match(page, /<BiaAssistant \/>/);
   assert.match(component, /"\/audio\/bia-imersao\.wav"/);
   assert.match(component, /await audio\.play\(\)/);
   assert.doesNotMatch(component, /autoPlay/);
