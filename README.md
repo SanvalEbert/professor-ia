@@ -16,9 +16,9 @@ Oferecer uma experiência prática e orientada à autoria docente, com exploraç
 
 ## Bia — assistente de boas-vindas
 
-A Bia apresenta a Imersão em um painel flutuante discreto, exibido após um breve intervalo na página inicial. O áudio da usuária é mantido em `public/audio/bia-imersao.wav` (original em WAV) e só começa após a interação com o botão **Ouvir a Bia**, para respeitar a política de reprodução dos navegadores e a preferência do visitante.
+A Bia aparece após um breve intervalo como um botão flutuante compacto, sem sobrepor o conteúdo principal. O painel só é expandido quando o visitante o solicita. O áudio da usuária é mantido em `public/audio/bia-imersao.wav` (original em WAV) e só começa após a interação com o botão **Ouvir a Bia**, para respeitar a política de reprodução dos navegadores e a preferência do visitante.
 
-O visitante pode pausar, retomar, ouvir novamente, ler a transcrição, fechar o painel ou ir diretamente para a inscrição. O widget pode ser reaberto e o fechamento é lembrado durante a sessão do navegador.
+O visitante pode pausar, retomar, ouvir novamente, ler a transcrição, fechar o painel ou ir diretamente para a inscrição. O widget pode ser aberto e recolhido a qualquer momento durante a visita.
 
 ## Inscrições
 
