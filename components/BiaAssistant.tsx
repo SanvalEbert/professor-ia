@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Bot, Headphones, Pause, Play, RotateCcw, Sparkles, Volume2, X } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Pause, Play, RotateCcw, X } from "lucide-react";
 
 const AUDIO_SOURCE = "/audio/bia-imersao.wav";
 
@@ -37,7 +38,7 @@ export default function MiaAssistant() {
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setVisible(true);
-      // A assistente é apresentada minimizada, sem cobrir a mensagem principal.
+      // A mensagem de boas-vindas abre automaticamente; o áudio exige um clique.
       setOpen(true);
     }, 1700);
     return () => window.clearTimeout(timer);
@@ -93,13 +94,12 @@ export default function MiaAssistant() {
       />
 
       {open && (
-        <div id="bia-painel" className="bia-panel mb-2 overflow-hidden rounded-[1.25rem] border border-blue-100 bg-white shadow-[0_18px_68px_rgba(11,31,76,.30)]" role="region" aria-label="Mensagem de boas-vindas da Mia">
+        <div id="mia-painel" className="bia-panel mb-2 overflow-hidden rounded-[1.25rem] border border-blue-100 bg-white shadow-[0_18px_68px_rgba(11,31,76,.30)]" role="region" aria-label="Mensagem de boas-vindas da Mia">
           <div className="relative overflow-hidden bg-gradient-to-r from-[#0b2051] via-[#1245af] to-[#2563eb] px-3 pb-3 pt-3 text-white">
             <div className="pointer-events-none absolute -right-10 -top-20 h-40 w-40 rounded-full bg-sky-300/20 blur-2xl" />
             <div className="relative flex items-start gap-3">
-              <span className="relative grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-white/30 bg-white/15">
-                <Bot size={21} aria-hidden="true" />
-                <span className="absolute -right-1 -top-1 rounded-full bg-sky-300 p-1"><Sparkles size={10} className="text-blue-900" aria-hidden="true" /></span>
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-blue-50 ring-2 ring-white/40">
+                <Image src="/mia-seal.svg" width={48} height={48} alt="" aria-hidden="true" className="h-12 w-12" />
               </span>
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-bold uppercase tracking-[.16em] text-blue-200">Assistente virtual</p>
@@ -148,13 +148,19 @@ export default function MiaAssistant() {
       <button
         type="button"
         aria-expanded={open}
-        aria-controls="bia-painel"
+        aria-controls="mia-painel"
+        aria-label={open ? "Recolher a mensagem da Mia" : "Abrir a mensagem de áudio da Mia"}
         onClick={() => { if (open) close(); else setOpen(true); }}
-        className="bia-launcher inline-flex min-h-11 items-center gap-2.5 rounded-full border border-white/50 bg-[#102f77] px-3 py-2 text-xs font-bold text-white shadow-[0_8px_32px_rgba(11,31,76,.3)] transition hover:-translate-y-0.5 hover:bg-blue-700"
+        className="bia-launcher mia-launcher group relative inline-flex min-h-[4.25rem] max-w-full items-center gap-2.5 rounded-full border border-blue-200 bg-white px-2 py-1.5 pr-4 text-left shadow-[0_10px_34px_rgba(13,49,119,.20)] transition duration-200 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-[0_14px_38px_rgba(13,49,119,.27)]"
       >
-        <span className="grid h-8 w-8 place-items-center rounded-full bg-blue-400/25"><Headphones size={19} aria-hidden="true" /></span>
-        <span>{open ? "Mia • Assistente virtual" : "Ouvir a Mia"}</span>
-        {open && playing && <Volume2 size={16} className="text-blue-200" aria-hidden="true" />}
+        <span className="mia-avatar relative grid h-12 w-12 shrink-0 place-items-center rounded-full bg-blue-50 ring-2 ring-blue-100" aria-hidden="true">
+          <Image src="/mia-seal.svg" width={48} height={48} alt="" className="h-12 w-12" />
+        </span>
+        <span className="min-w-0 leading-tight">
+          <span className="block whitespace-nowrap text-sm font-extrabold tracking-tight text-blue-800">Fale com a Mia</span>
+          <span className="mt-0.5 block whitespace-nowrap text-[11px] font-semibold text-slate-500">Assistente educacional</span>
+        </span>
+        <span className="mia-sparkle pointer-events-none absolute -right-1 -top-1 h-3.5 w-3.5 rounded-full bg-sky-400 ring-[3px] ring-white" aria-hidden="true" />
       </button>
     </aside>
   );

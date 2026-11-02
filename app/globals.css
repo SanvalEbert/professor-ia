@@ -93,12 +93,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   background-size: 34px 34px;
 }
 
-/* A Bia fica acima do botão voltar ao topo e não cobre o VLibras. */
+/* A Mia fica acima do botão voltar ao topo e não cobre o VLibras. */
 .bia-widget {
   bottom: calc(1.1rem + env(safe-area-inset-bottom));
   transition: opacity .35s ease;
 }
 .bia-panel { animation: bia-arrival .35s cubic-bezier(.2,.8,.2,1) both; }
+/* Selo da Mia: personagem, hierarquia textual e movimento suave, sem autoplay. */
+.mia-launcher { -webkit-tap-highlight-color: transparent; }
+.mia-avatar { animation: mia-greeting 4.8s ease-in-out infinite; }
+.mia-sparkle { animation: mia-sparkle 3.2s ease-in-out infinite; }
+@keyframes mia-greeting {
+  0%, 84%, 100% { transform: rotate(0deg) scale(1); }
+  89% { transform: rotate(-6deg) scale(1.035); }
+  94% { transform: rotate(4deg) scale(1.035); }
+}
+@keyframes mia-sparkle {
+  0%, 100% { opacity: .65; transform: scale(.75); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
 @keyframes bia-arrival {
   from { opacity: 0; transform: translateY(16px) scale(.97); }
   to { opacity: 1; transform: translateY(0) scale(1); }

@@ -227,3 +227,21 @@ test("Mia aparece com controle acessível e sem reprodução automática", () =>
   const file = statSync(new URL("../public/audio/bia-imersao.wav", import.meta.url));
   assert.ok(file.size > 2000000 && file.size < 4000000, "áudio WAV original da Mia presente");
 });
+
+test("Mia usa selo ilustrado e botão de convite acessível", () => {
+  const component = read("components/BiaAssistant.tsx");
+  const css = read("app/globals.css");
+  const svg = read("public/mia-seal.svg");
+
+  assert.match(component, /src="\/mia-seal\.svg"/);
+  assert.match(component, /Fale com a Mia/);
+  assert.match(component, /Assistente educacional/);
+  assert.match(component, /aria-controls="mia-painel"/);
+  assert.match(component, /setOpen\(true\)/);
+  assert.match(component, /onClick=\{\(\) => \{ if \(open\) close\(\); else setOpen\(true\); \}\}/);
+  assert.match(css, /\.mia-avatar/);
+  assert.match(css, /prefers-reduced-motion/);
+  assert.match(svg, /<svg/);
+  assert.match(svg, /Mia, assistente educacional/);
+  assert.ok(statSync(new URL("../public/mia-seal.svg", import.meta.url)).size > 1000);
+});
