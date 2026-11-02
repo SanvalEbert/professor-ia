@@ -10,7 +10,6 @@ import {
   Check,
   ChevronRight,
   FileCheck2,
-  GraduationCap,
   Instagram,
   Layers3,
   Linkedin,
@@ -151,14 +150,6 @@ export default function Home() {
                   <p className="mt-1 text-sm text-slate-200">Doutor e pesquisador em IA aplicada à Educação</p>
                 </div>
               </div>
-            </div>
-            <div className="animate-float absolute -left-6 top-16 hidden rounded-2xl border border-white bg-white/95 p-4 shadow-xl backdrop-blur sm:block">
-              <GraduationCap className="text-brand" size={22} />
-              <p className="mt-2 text-sm font-extrabold">Prática docente</p>
-            </div>
-            <div className="animate-float absolute -right-5 bottom-24 hidden rounded-2xl border border-white bg-white/95 p-4 shadow-xl backdrop-blur sm:block [animation-delay:1.4s]">
-              <Bot className="text-accent" size={22} />
-              <p className="mt-2 text-sm font-extrabold">Agentes de IA</p>
             </div>
           </div>
         </div>
