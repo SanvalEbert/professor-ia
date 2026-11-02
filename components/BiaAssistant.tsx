@@ -10,8 +10,8 @@ const transcript = [
   "Eu sou Mia, assistente virtual do professor Sanval Ebert, especialista em Inteligência Artificial e Educação. E tenho um convite especial para você: Imersão IA para Professores!",
   "Serão três encontros online e gratuitos, nos dias 17, 18 e 19 de novembro, às 20 horas.",
   "Você vai descobrir como usar a IA para planejar aulas, produzir conteúdos, criar atividades, avaliar a aprendizagem e até desenvolver agentes inteligentes!",
-  "Transforme sua prática docente com Inteligência Artificial! Garanta sua participação! Inscreva-se pelo link da bio.",
-  "A educação está mudando. Transforme também a sua prática docente! Inscreva-se gratuitamente pelo link da bio!",
+  "Transforme sua prática docente com Inteligência Artificial! Garanta sua participação! Clique em Fazer inscrição gratuita aqui no site.",
+  "A educação está mudando. Transforme também a sua prática docente! Clique em Fazer inscrição gratuita!",
 ];
 
 function formatTime(seconds: number) {
@@ -31,14 +31,14 @@ export default function MiaAssistant() {
   const [playing, setPlaying] = useState(false);
   const [finished, setFinished] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(53);
+  const [duration, setDuration] = useState(0);
   const [error, setError] = useState("");
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setVisible(true);
       // A assistente é apresentada minimizada, sem cobrir a mensagem principal.
-      setOpen(false);
+      setOpen(true);
     }, 1700);
     return () => window.clearTimeout(timer);
   }, []);
