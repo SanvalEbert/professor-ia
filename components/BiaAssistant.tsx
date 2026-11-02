@@ -37,11 +37,8 @@ export default function BiaAssistant() {
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setVisible(true);
-      try {
-        setOpen(window.sessionStorage.getItem("bia-assistente-fechada") !== "sim");
-      } catch {
-        setOpen(true);
-      }
+      // A assistente é apresentada minimizada, sem cobrir a mensagem principal.
+      setOpen(false);
     }, 1700);
     return () => window.clearTimeout(timer);
   }, []);
@@ -79,7 +76,7 @@ export default function BiaAssistant() {
   };
 
   return (
-    <aside className={`bia-widget fixed left-3 z-[56] w-[min(22rem,calc(100vw-1.5rem))] sm:left-5 ${visible ? "opacity-100" : "pointer-events-none opacity-0"}`} aria-label="Bia, assistente virtual da imersão">
+    <aside className={`bia-widget fixed left-3 z-[56] w-[min(19rem,calc(100vw-1.5rem))] sm:left-5 ${visible ? "opacity-100" : "pointer-events-none opacity-0"}`} aria-label="Bia, assistente virtual da imersão">
       <audio
         ref={audioRef}
         src={AUDIO_SOURCE}
@@ -96,17 +93,17 @@ export default function BiaAssistant() {
       />
 
       {open && (
-        <div id="bia-painel" className="bia-panel mb-3 overflow-hidden rounded-[1.4rem] border border-blue-100 bg-white shadow-[0_18px_68px_rgba(11,31,76,.30)]" role="region" aria-label="Mensagem de boas-vindas da Bia">
-          <div className="relative overflow-hidden bg-gradient-to-r from-[#0b2051] via-[#1245af] to-[#2563eb] px-4 pb-4 pt-4 text-white">
+        <div id="bia-painel" className="bia-panel mb-2 overflow-hidden rounded-[1.25rem] border border-blue-100 bg-white shadow-[0_18px_68px_rgba(11,31,76,.30)]" role="region" aria-label="Mensagem de boas-vindas da Bia">
+          <div className="relative overflow-hidden bg-gradient-to-r from-[#0b2051] via-[#1245af] to-[#2563eb] px-3 pb-3 pt-3 text-white">
             <div className="pointer-events-none absolute -right-10 -top-20 h-40 w-40 rounded-full bg-sky-300/20 blur-2xl" />
             <div className="relative flex items-start gap-3">
-              <span className="relative grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-white/30 bg-white/15">
-                <Bot size={25} aria-hidden="true" />
+              <span className="relative grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-white/30 bg-white/15">
+                <Bot size={21} aria-hidden="true" />
                 <span className="absolute -right-1 -top-1 rounded-full bg-sky-300 p-1"><Sparkles size={10} className="text-blue-900" aria-hidden="true" /></span>
               </span>
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-bold uppercase tracking-[.16em] text-blue-200">Assistente virtual</p>
-                <h2 className="text-xl font-black">Oi, eu sou a Bia!</h2>
+                <h2 className="text-lg font-black">Oi, eu sou a Bia!</h2>
                 <p className="mt-1 text-xs leading-5 text-blue-50">Tenho um convite especial para você, professor(a).</p>
               </div>
               <button type="button" className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white/10 transition hover:bg-white/25 focus-visible:outline-white" onClick={close} aria-label="Fechar mensagem da Bia">
@@ -115,9 +112,9 @@ export default function BiaAssistant() {
             </div>
           </div>
 
-          <div className="max-h-[min(63dvh,30rem)] space-y-3 overflow-y-auto px-4 py-4 text-slate-800">
+          <div className="max-h-[min(58dvh,25rem)] space-y-2.5 overflow-y-auto px-3 py-3 text-slate-800">
             <p className="text-base font-extrabold leading-snug text-[#0b2051]">Seus alunos já estão usando IA. E você?</p>
-            <p className="text-sm leading-6 text-slate-600">Ouça o recado da Bia sobre a Imersão IA para Professores, gratuita e online.</p>
+            <p className="text-xs leading-5 text-slate-600">Ouça o recado da Bia sobre a Imersão IA para Professores, gratuita e online.</p>
 
             <div className="flex items-center gap-3">
               <button type="button" onClick={togglePlayback} className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-full bg-blue-600 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-blue-700" aria-label={playing ? "Pausar mensagem da Bia" : finished ? "Ouvir a mensagem da Bia novamente" : "Ouvir mensagem da Bia"}>
@@ -153,7 +150,7 @@ export default function BiaAssistant() {
         aria-expanded={open}
         aria-controls="bia-painel"
         onClick={() => { if (open) close(); else setOpen(true); }}
-        className="bia-launcher inline-flex min-h-12 items-center gap-2.5 rounded-full border border-white/50 bg-[#102f77] px-4 py-2.5 text-sm font-bold text-white shadow-[0_8px_32px_rgba(11,31,76,.3)] transition hover:-translate-y-0.5 hover:bg-blue-700"
+        className="bia-launcher inline-flex min-h-11 items-center gap-2.5 rounded-full border border-white/50 bg-[#102f77] px-3 py-2 text-xs font-bold text-white shadow-[0_8px_32px_rgba(11,31,76,.3)] transition hover:-translate-y-0.5 hover:bg-blue-700"
       >
         <span className="grid h-8 w-8 place-items-center rounded-full bg-blue-400/25"><Headphones size={19} aria-hidden="true" /></span>
         <span>{open ? "Bia • Assistente virtual" : "Ouvir a Bia"}</span>
