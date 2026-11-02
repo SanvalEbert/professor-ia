@@ -16,7 +16,7 @@ Oferecer uma experiência prática e orientada à autoria docente, com exploraç
 
 ## Mia — assistente de boas-vindas
 
-A Mia aparece após um breve intervalo como um botão flutuante compacto, sem sobrepor o conteúdo principal. O painel só é expandido quando o visitante o solicita. O áudio da usuária é mantido em `public/audio/bia-imersao.wav` (original em WAV) e só começa após a interação com o botão **Ouvir a Mia**, para respeitar a política de reprodução dos navegadores e a preferência do visitante.
+A Mia abre automaticamente após um breve intervalo em um painel compacto. O visitante pode recolher o painel e reabri-lo pelo botão flutuante. O áudio da usuária é mantido em `public/audio/bia-imersao.wav` (original em WAV) e só começa após a interação com o botão **Ouvir a Mia**, para respeitar a política de reprodução dos navegadores e a preferência do visitante.
 
 O visitante pode pausar, retomar, ouvir novamente, ler a transcrição, fechar o painel ou ir diretamente para a inscrição. O widget pode ser aberto e recolhido a qualquer momento durante a visita.
 
