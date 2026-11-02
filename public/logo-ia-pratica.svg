@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="230" viewBox="0 0 1180 230" role="img" aria-labelledby="title desc">
+<title id="title">Inteligência Artificial na Prática Docente</title>
+<desc id="desc">Marca com rede neural e chip de IA em tons de azul, ciano e violeta.</desc>
+<defs>
+  <linearGradient id="brain" x1="12" y1="160" x2="178" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#14c9dc"/><stop offset=".44" stop-color="#177ee8"/><stop offset="1" stop-color="#7544cf"/></linearGradient>
+  <linearGradient id="chip" x1="72" y1="72" x2="139" y2="135" gradientUnits="userSpaceOnUse"><stop stop-color="#143aaf"/><stop offset=".56" stop-color="#155fe0"/><stop offset="1" stop-color="#502cbd"/></linearGradient>
+  <linearGradient id="type" x1="520" y1="0" x2="1040" y2="140" gradientUnits="userSpaceOnUse"><stop stop-color="#165fe5"/><stop offset=".56" stop-color="#2574ec"/><stop offset="1" stop-color="#6439c9"/></linearGradient>
+</defs>
+<g transform="translate(6 6) scale(1.06)">
+  <path d="M99 22C82 14 62 24 57 42 36 40 22 55 22 74 7 85 10 105 24 117 20 137 34 153 54 153 64 165 82 169 96 160L108 176 121 156C143 159 161 145 163 125 180 117 186 95 173 81 177 63 164 46 146 45 139 27 115 16 99 22Z" fill="none" stroke="url(#brain)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <g stroke="url(#brain)" stroke-width="4.5" stroke-linecap="round" opacity=".94" fill="none">
+    <path d="M32 82L59 90 77 78M36 116L58 116 77 124M63 47L76 67M100 39L100 65M139 49L128 71M160 83L139 90M154 123L135 121M88 153L94 138"/>
+  </g>
+  <g fill="#fff" stroke="url(#brain)" stroke-width="4">
+    <circle cx="32" cy="82" r="6"/><circle cx="36" cy="116" r="6"/><circle cx="63" cy="47" r="6"/>
+    <circle cx="100" cy="39" r="6"/><circle cx="139" cy="49" r="6"/><circle cx="160" cy="83" r="6"/>
+    <circle cx="154" cy="123" r="6"/><circle cx="88" cy="153" r="6"/>
+  </g>
+  <rect x="70" y="67" width="69" height="69" rx="15" fill="url(#chip)" stroke="#e5f6ff" stroke-width="5"/>
+  <text x="104.5" y="112" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="800" letter-spacing="-1.5" fill="#fff">IA</text>
+</g>
+<text x="230" y="91" font-family="Arial,Helvetica,sans-serif" font-size="66" font-weight="800" letter-spacing="-2.3" fill="#0b1730">Inteligência <tspan fill="url(#type)">Artificial</tspan></text>
+<text x="233" y="157" font-family="Arial,Helvetica,sans-serif" font-size="54" font-weight="700" letter-spacing="-1.3" fill="#1e407c">na Prática Docente</text>
+<rect x="233" y="185" width="35" height="4" rx="2" fill="#13bcdc"/>
+<text x="283" y="197" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="800" letter-spacing="3.2" fill="#61738d">IMERSÃO PARA PROFESSORES</text>
+</svg>

@@ -4,7 +4,7 @@ export default function PoliticaDePrivacidade() {
       <a href="/" className="text-sm font-semibold text-brand">← Voltar</a>
       <h1 className="mt-6 text-4xl font-black text-ink">Política de Privacidade</h1>
       <p className="mt-6 leading-8">
-        Esta política explica como os dados informados na inscrição da Imersão IA na Prática Docente são utilizados para administrar a participação, enviar orientações sobre as mentorias e realizar comunicações relacionadas ao projeto.
+        Esta política explica como os dados informados na inscrição da Inteligência Artificial na Prática Docente são utilizados para administrar a participação, enviar orientações sobre as mentorias e realizar comunicações relacionadas ao projeto.
       </p>
 
       <h2 className="mt-8 text-2xl font-bold text-ink">Dados coletados</h2>
@@ -14,7 +14,7 @@ export default function PoliticaDePrivacidade() {
 
       <h2 className="mt-8 text-2xl font-bold text-ink">Como os dados são utilizados</h2>
       <p className="mt-3 leading-8">
-        Os dados são utilizados para confirmar a inscrição, organizar a participação na imersão, enviar links, materiais e avisos, além de compreender de forma agregada a origem das inscrições. Os dados não são necessários para finalidades alheias à operação e comunicação da Imersão IA na Prática Docente.
+        Os dados são utilizados para confirmar a inscrição, organizar a participação na imersão, enviar links, materiais e avisos, além de compreender de forma agregada a origem das inscrições. Os dados não são necessários para finalidades alheias à operação e comunicação da Inteligência Artificial na Prática Docente.
       </p>
 
       <h2 className="mt-8 text-2xl font-bold text-ink">Armazenamento e segurança</h2>

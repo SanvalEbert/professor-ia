@@ -79,15 +79,28 @@ export default function Home() {
   return (
     <main className="overflow-hidden bg-white text-ink">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/70 bg-white/85 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-          <a href="#inicio" className="flex min-w-0 shrink-0 items-center" aria-label="Imersão IA para Professores - início">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-5 sm:py-4 lg:px-8">
+          <a href="#inicio" className="flex min-w-0 items-center gap-2 sm:shrink-0 sm:gap-0" aria-label="Inteligência Artificial na Prática Docente - início">
             <Image
-              src="/logo-imersao-ia.svg"
-              width={1120}
-              height={235}
-              alt="Imersão IA para Professores — na Prática Docente"
+              src="/logo-ia-pratica-icon.svg"
+              width={200}
+              height={200}
+              alt=""
               priority
-              className="block h-auto w-[169px] sm:w-[270px] lg:w-[314px] xl:w-[332px]"
+              className="h-11 w-11 shrink-0 sm:hidden"
+            />
+            <span className="min-w-0 leading-[1.05] sm:hidden" aria-hidden="true">
+              <span className="block whitespace-nowrap text-[14px] font-black tracking-tight text-ink">Inteligência</span>
+              <span className="block whitespace-nowrap text-[14px] font-black tracking-tight text-brand">Artificial</span>
+              <span className="mt-1 block whitespace-nowrap text-[8px] font-extrabold uppercase tracking-[.06em] text-slate-600">na Prática Docente</span>
+            </span>
+            <Image
+              src="/logo-ia-pratica.svg"
+              width={1180}
+              height={230}
+              alt=""
+              priority
+              className="hidden h-auto w-[250px] sm:block lg:w-[310px] xl:w-[340px]"
             />
           </a>
           <nav className="hidden items-center gap-5 text-sm font-semibold text-slate-600 lg:flex" aria-label="Navegação principal">
@@ -95,7 +108,7 @@ export default function Home() {
             <a className="transition hover:text-brand" href="#jornada">Imersão</a>
             <a className="transition hover:text-brand" href="#quem-conduz">Quem conduz</a>
           </nav>
-          <a href="#inscricao" className="shrink-0 rounded-full bg-accent px-4 py-3 text-sm font-extrabold text-white shadow-lg shadow-blue-200 transition hover:-translate-y-0.5 hover:shadow-xl sm:px-5">
+          <a href="#inscricao" className="shrink-0 rounded-full bg-accent px-3 py-2.5 text-xs font-extrabold text-white shadow-lg shadow-blue-200 transition hover:-translate-y-0.5 hover:shadow-xl sm:px-5 sm:py-3 sm:text-sm">
             <span className="sm:hidden">Inscreva-se</span>
             <span className="hidden sm:inline">Participar gratuitamente</span>
           </a>
@@ -112,8 +125,9 @@ export default function Home() {
             <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/80 px-4 py-2 text-sm font-bold text-brand shadow-sm backdrop-blur">
               <Sparkles size={16} /> Imersão online e gratuita para professores
             </span>
-            <h1 className="text-balance mt-7 max-w-4xl text-5xl font-black leading-[.98] tracking-[-.045em] text-ink md:text-7xl lg:text-[5.25rem]">
-              Imersão <span className="bg-gradient-to-r from-brand to-sky-500 bg-clip-text text-transparent">IA na Prática Docente.</span>
+            <h1 className="text-balance mt-7 max-w-4xl text-[clamp(2.25rem,5.5vw,4.75rem)] font-black leading-[1.04] tracking-[-.045em] text-ink">
+              Inteligência <span className="bg-gradient-to-r from-brand to-sky-500 bg-clip-text text-transparent">Artificial</span>
+              <span className="block bg-gradient-to-r from-brand to-sky-500 bg-clip-text text-transparent">na Prática Docente.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600 md:text-xl">
               Três dias consecutivos para compreender, experimentar e aplicar a IA em mentorias de uma hora. Explore ferramentas e desenvolva uma proposta para suas aulas, com autoria e intencionalidade pedagógica.
@@ -142,7 +156,7 @@ export default function Home() {
             <div className="absolute -inset-6 rounded-[3rem] bg-gradient-to-br from-[#e2b28f]/45 via-blue-300/35 to-blue-800/25 blur-2xl" />
             <div className="relative overflow-hidden rounded-[2.75rem] border border-white/70 bg-gradient-to-br from-blue-950 via-blue-800 to-[#c9a188] p-2.5 shadow-[0_30px_90px_rgba(15,35,81,.25)]">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[2.15rem] bg-[#b78b70]">
-                <Image src="/sanval-imersao.webp" alt="Sanval Ebert, idealizador da Imersão IA na Prática Docente" fill priority sizes="(max-width: 1024px) 90vw, 42vw" className="object-cover object-center" />
+                <Image src="/sanval-imersao.webp" alt="Sanval Ebert, idealizador da Inteligência Artificial na Prática Docente" fill priority sizes="(max-width: 1024px) 90vw, 42vw" className="object-cover object-center" />
                 <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#0d1e41]/90 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-7 text-white">
                   <p className="text-sm font-bold uppercase tracking-[.22em] text-blue-200">Quem conduz</p>
@@ -196,7 +210,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
             <div className="max-w-3xl">
-              <p className="font-black uppercase tracking-[.18em] text-brand">Imersão IA na Prática Docente</p>
+              <p className="font-black uppercase tracking-[.18em] text-brand">Inteligência Artificial na Prática Docente</p>
               <h2 className="text-balance mt-4 text-4xl font-black tracking-tight md:text-5xl">Três mentorias. Novas possibilidades para sua prática docente.</h2>
             </div>
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-2xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-bold text-blue-800 shadow-sm sm:rounded-full">
@@ -279,7 +293,7 @@ export default function Home() {
           <div className="lg:sticky lg:top-28">
             <p className="font-black uppercase tracking-[.18em] text-blue-200">Inscrição gratuita</p>
             <h2 className="text-balance mt-4 text-4xl font-black md:text-5xl">Dê o próximo passo para transformar a IA em uma aliada da sua prática docente.</h2>
-            <p className="mt-6 text-lg leading-8 text-blue-100">Garanta sua participação na Imersão IA na Prática Docente, de 17 a 19 de novembro de 2026, das 20h às 21h.</p>
+            <p className="mt-6 text-lg leading-8 text-blue-100">Garanta sua participação na Inteligência Artificial na Prática Docente, de 17 a 19 de novembro de 2026, das 20h às 21h.</p>
             <div className="mt-8 space-y-4 text-sm font-bold text-blue-50">
               {["Participação gratuita", "Três mentorias de 1h, ao vivo", "Atividades práticas e produção pedagógica", "Cadastro pelo site com confirmação após a inscrição"].map((item) => (
                 <div key={item} className="flex items-center gap-3"><span className="grid h-8 w-8 place-items-center rounded-full bg-white/10"><Check size={16} /></span>{item}</div>
@@ -293,9 +307,8 @@ export default function Home() {
       <footer className="bg-ink px-5 py-12 text-slate-400">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 text-center text-sm md:flex-row md:text-left">
           <div>
-            <strong className="inline-flex items-baseline gap-1 text-white">
-              <span className="text-lg font-black text-blue-400">IA</span>
-              <span className="font-extrabold">na Prática Docente</span>
+            <strong className="font-extrabold text-white">
+              <span className="text-blue-400">Inteligência Artificial</span> na Prática Docente
             </strong>
             <p className="mt-2">Imersão prática para professores na era da Inteligência Artificial.</p>
           </div>

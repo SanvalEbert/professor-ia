@@ -1,6 +1,6 @@
-# Imersão IA para Professores — Na Prática Docente
+# Inteligência Artificial na Prática Docente
 
-Projeto de formação docente online e gratuita, idealizado por **Sanval Ebert**.
+Imersão de formação docente online e gratuita, idealizada por **Sanval Ebert**. A identidade visual utiliza uma rede neural em formato de balão de diálogo com chip central de IA. No celular, o cabeçalho utiliza uma assinatura compacta e legível.
 
 ## Próxima edição
 

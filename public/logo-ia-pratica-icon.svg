@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+<title id="title">Inteligência Artificial na Prática Docente</title>
+<desc id="desc">Símbolo de rede neural em forma de balão de diálogo, com chip central de inteligência artificial.</desc>
+<defs>
+  <linearGradient id="brain" x1="12" y1="160" x2="178" y2="22" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#14c9dc"/><stop offset=".44" stop-color="#177ee8"/><stop offset="1" stop-color="#7544cf"/>
+  </linearGradient>
+  <linearGradient id="chip" x1="72" y1="72" x2="139" y2="135" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#143aaf"/><stop offset=".56" stop-color="#155fe0"/><stop offset="1" stop-color="#502cbd"/>
+  </linearGradient>
+</defs>
+<path d="M99 22C82 14 62 24 57 42 36 40 22 55 22 74 7 85 10 105 24 117 20 137 34 153 54 153 64 165 82 169 96 160L108 176 121 156C143 159 161 145 163 125 180 117 186 95 173 81 177 63 164 46 146 45 139 27 115 16 99 22Z" fill="none" stroke="url(#brain)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<g stroke="url(#brain)" stroke-width="4.5" stroke-linecap="round" opacity=".94" fill="none">
+  <path d="M32 82L59 90 77 78M36 116L58 116 77 124M63 47L76 67M100 39L100 65M139 49L128 71M160 83L139 90M154 123L135 121M88 153L94 138"/>
+</g>
+<g fill="#fff" stroke="url(#brain)" stroke-width="4">
+  <circle cx="32" cy="82" r="6"/><circle cx="36" cy="116" r="6"/><circle cx="63" cy="47" r="6"/>
+  <circle cx="100" cy="39" r="6"/><circle cx="139" cy="49" r="6"/><circle cx="160" cy="83" r="6"/>
+  <circle cx="154" cy="123" r="6"/><circle cx="88" cy="153" r="6"/>
+</g>
+<rect x="70" y="67" width="69" height="69" rx="15" fill="url(#chip)" stroke="#e5f6ff" stroke-width="5"/>
+<text x="104.5" y="112" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="800" letter-spacing="-1.5" fill="#fff">IA</text>
+</svg>

@@ -25,15 +25,15 @@ test("cabeçalho usa a nova logo vetorial e se adapta ao celular", () => {
   const layout = read("app/layout.tsx");
   const css = read("app/globals.css");
 
-  assert.match(page, /aria-label="Imersão IA para Professores - início"/);
-  assert.match(page, /src="\/logo-imersao-ia\.svg"/);
+  assert.match(page, /aria-label="Inteligência Artificial na Prática Docente - início"/);
+  assert.match(page, /src="\/logo-ia-pratica\.svg"/);
   assert.match(page, /className="sm:hidden">Inscreva-se/);
   assert.doesNotMatch(page, /Professor IA/);
-  assert.match(layout, /Imersão IA para Professores/);
-  assert.match(layout, /logo-imersao-ia-icon\.svg/);
+  assert.match(layout, /Inteligência Artificial na Prática Docente/);
+  assert.match(layout, /logo-ia-pratica-icon\.svg/);
   assert.doesNotMatch(css, /header a\[href="#inicio"\] > span:last-child/);
-  assert.ok(statSync(new URL("../public/logo-imersao-ia.svg", import.meta.url)).size > 1000);
-  assert.ok(statSync(new URL("../public/logo-imersao-ia-icon.svg", import.meta.url)).size > 1000);
+  assert.ok(statSync(new URL("../public/logo-ia-pratica.svg", import.meta.url)).size > 1000);
+  assert.ok(statSync(new URL("../public/logo-ia-pratica-icon.svg", import.meta.url)).size > 1000);
 });
 
 test("usa identidade visual predominantemente azul", () => {
@@ -143,7 +143,7 @@ test("metadataBase usa URL pública configurável", () => {
   assert.match(env, /NEXT_PUBLIC_SITE_URL=/);
 });
 
-test("exibe a Imersão IA e as datas de novembro de 2026", () => {
+test("exibe a identidade Inteligência Artificial na Prática Docente e as datas de novembro de 2026", () => {
   const page = read("app/page.tsx");
   const layout = read("app/layout.tsx");
   const form = read("components/RegistrationForm.tsx");
@@ -151,7 +151,8 @@ test("exibe a Imersão IA e as datas de novembro de 2026", () => {
   const privacy = read("app/politica-de-privacidade/page.tsx");
 
   assert.match(page, /Imersão online e gratuita para professores/);
-  assert.match(page, /Imersão IA na Prática Docente/);
+  assert.match(page, /Inteligência Artificial na Prática Docente/);
+  assert.doesNotMatch(page, /Imersão IA na Prática Docente/);
   assert.match(page, /17, 18 e 19 de novembro de 2026 · 20h às 21h/);
   assert.match(page, /17, 18 e 19\/11\/2026/);
 
@@ -164,14 +165,14 @@ test("exibe a Imersão IA e as datas de novembro de 2026", () => {
     assert.ok(page.includes(`dateTime: "${iso}"`));
   }
   assert.doesNotMatch(page, /22\/08|29\/08|05\/09|2026-08-22|2026-08-29|2026-09-05/);
-  assert.match(layout, /Imersão IA para Professores/);
+  assert.match(layout, /Inteligência Artificial na Prática Docente/);
   assert.match(layout, /das 20h às 21h/);
   assert.match(form, /das 20h às 21h/);
   assert.match(confirmation, /das 20h às 21h/);
   assert.doesNotMatch(page + layout + form + confirmation, /8h30 às 10h/);
-  assert.match(form, /Imersão IA na Prática Docente/);
-  assert.match(confirmation, /Imersão IA na Prática Docente/);
-  assert.match(privacy, /Imersão IA na Prática Docente/);
+  assert.match(form, /Inteligência Artificial na Prática Docente/);
+  assert.match(confirmation, /Inteligência Artificial na Prática Docente/);
+  assert.match(privacy, /Inteligência Artificial na Prática Docente/);
 });
 
 test("usa o retrato novo e otimizado em ambas as seções", () => {

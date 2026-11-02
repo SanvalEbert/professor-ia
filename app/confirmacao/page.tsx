@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Inscrição confirmada | Imersão IA na Prática Docente",
+  title: "Inscrição confirmada | Inteligência Artificial na Prática Docente",
   robots: {
     index: false,
     follow: false,
@@ -19,7 +19,7 @@ export default function Confirmacao() {
         <div aria-hidden="true" className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-green-100 text-3xl">✓</div>
         <h1 className="mt-6 text-4xl font-black">Inscrição realizada!</h1>
         <p className="mt-4 text-lg leading-8 text-slate-600">
-          Sua inscrição na <strong>Imersão IA na Prática Docente</strong>, nos dias 17, 18 e 19 de novembro de 2026, das 20h às 21h (horário de Brasília), foi realizada.
+          Sua inscrição na <strong>Inteligência Artificial na Prática Docente</strong>, nos dias 17, 18 e 19 de novembro de 2026, das 20h às 21h (horário de Brasília), foi realizada.
         </p>
         <p className="mt-3 leading-7 text-slate-600">
           Agora entre no grupo oficial do WhatsApp para receber os links das mentorias, materiais e avisos importantes do projeto.
