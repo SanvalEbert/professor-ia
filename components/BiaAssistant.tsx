@@ -104,7 +104,7 @@ export default function MiaAssistant() {
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-bold uppercase tracking-[.16em] text-blue-200">Recado da Mia</p>
                 <h2 className="text-lg font-black">Oi, eu sou a Mia!</h2>
-                <p className="mt-1 text-xs leading-5 text-blue-50">Tenho um convite especial para você, professor(a).</p>
+                <p className="mt-1 text-xs leading-5 text-blue-50">Tenho um convite especial para você!</p>
               </div>
               <button type="button" className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white/10 transition hover:bg-white/25 focus-visible:outline-white" onClick={close} aria-label="Fechar mensagem da Mia">
                 <X size={18} aria-hidden="true" />
